@@ -34,11 +34,11 @@ Partial Class Form1
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(386, 102)
+        ClientSize = New Size(361, 0)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "Form1"
         ShowInTaskbar = False
-        Text = "Form1"
+        Text = "Main converter Window"
         WindowState = FormWindowState.Minimized
         ResumeLayout(False)
     End Sub
