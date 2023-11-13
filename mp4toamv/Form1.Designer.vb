@@ -25,6 +25,7 @@ Partial Class Form1
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Form1))
         OpenFileDialog1 = New OpenFileDialog()
         SaveFileDialog1 = New SaveFileDialog()
+        FolderBrowserDialog1 = New FolderBrowserDialog()
         SuspendLayout()
         ' 
         ' OpenFileDialog1
@@ -45,4 +46,5 @@ Partial Class Form1
 
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
 End Class
