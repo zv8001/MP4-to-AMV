@@ -22,29 +22,442 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Form1))
         OpenFileDialog1 = New OpenFileDialog()
         SaveFileDialog1 = New SaveFileDialog()
         FolderBrowserDialog1 = New FolderBrowserDialog()
+        BackgroundWorker1 = New ComponentModel.BackgroundWorker()
+        TabControl1 = New TabControl()
+        TabPage1 = New TabPage()
+        CheckBox3 = New CheckBox()
+        TextBox3 = New TextBox()
+        GroupBox1 = New GroupBox()
+        Label6 = New Label()
+        Label2 = New Label()
+        ProgressBar1 = New ProgressBar()
+        LBR_STAT = New Label()
+        Label3 = New Label()
+        Label5 = New Label()
+        Label4 = New Label()
+        Button4 = New Button()
+        TextBox2 = New TextBox()
+        CheckBox2 = New CheckBox()
+        Button3 = New Button()
+        TextBox1 = New TextBox()
+        ListBox1 = New ListBox()
+        Button2 = New Button()
+        Button1 = New Button()
+        Label1 = New Label()
+        CheckBox1 = New CheckBox()
+        TabPage2 = New TabPage()
+        GroupBox3 = New GroupBox()
+        Label8 = New Label()
+        LinkLabel1 = New LinkLabel()
+        Label7 = New Label()
+        Github_BTN = New Button()
+        Timer1 = New Timer(components)
+        MFS = New ComponentModel.BackgroundWorker()
+        Timer2 = New Timer(components)
+        GroupBox2 = New GroupBox()
+        Timeer = New Timer(components)
+        TabControl1.SuspendLayout()
+        TabPage1.SuspendLayout()
+        GroupBox1.SuspendLayout()
+        TabPage2.SuspendLayout()
+        GroupBox3.SuspendLayout()
+        GroupBox2.SuspendLayout()
         SuspendLayout()
         ' 
-        ' OpenFileDialog1
+        ' BackgroundWorker1
         ' 
+        ' 
+        ' TabControl1
+        ' 
+        TabControl1.Controls.Add(TabPage1)
+        TabControl1.Controls.Add(TabPage2)
+        TabControl1.Location = New Point(12, 12)
+        TabControl1.Name = "TabControl1"
+        TabControl1.SelectedIndex = 0
+        TabControl1.Size = New Size(456, 526)
+        TabControl1.TabIndex = 3
+        ' 
+        ' TabPage1
+        ' 
+        TabPage1.Controls.Add(CheckBox3)
+        TabPage1.Controls.Add(TextBox3)
+        TabPage1.Controls.Add(GroupBox1)
+        TabPage1.Controls.Add(Button4)
+        TabPage1.Controls.Add(TextBox2)
+        TabPage1.Controls.Add(CheckBox2)
+        TabPage1.Controls.Add(Button3)
+        TabPage1.Controls.Add(TextBox1)
+        TabPage1.Controls.Add(ListBox1)
+        TabPage1.Controls.Add(Button2)
+        TabPage1.Controls.Add(Button1)
+        TabPage1.Controls.Add(Label1)
+        TabPage1.Controls.Add(CheckBox1)
+        TabPage1.Location = New Point(4, 29)
+        TabPage1.Name = "TabPage1"
+        TabPage1.Padding = New Padding(3)
+        TabPage1.Size = New Size(448, 493)
+        TabPage1.TabIndex = 0
+        TabPage1.Text = "Converter"
+        TabPage1.UseVisualStyleBackColor = True
+        ' 
+        ' CheckBox3
+        ' 
+        CheckBox3.AutoSize = True
+        CheckBox3.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        CheckBox3.Location = New Point(336, 278)
+        CheckBox3.Name = "CheckBox3"
+        CheckBox3.Size = New Size(108, 21)
+        CheckBox3.TabIndex = 19
+        CheckBox3.Text = "FFMPEG Args"
+        CheckBox3.UseVisualStyleBackColor = True
+        ' 
+        ' TextBox3
+        ' 
+        TextBox3.ForeColor = Color.Black
+        TextBox3.Location = New Point(6, 274)
+        TextBox3.Name = "TextBox3"
+        TextBox3.PlaceholderText = "-c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882"
+        TextBox3.ReadOnly = True
+        TextBox3.Size = New Size(324, 27)
+        TextBox3.TabIndex = 18
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(Label6)
+        GroupBox1.Controls.Add(Label2)
+        GroupBox1.Controls.Add(ProgressBar1)
+        GroupBox1.Controls.Add(LBR_STAT)
+        GroupBox1.Controls.Add(Label3)
+        GroupBox1.Controls.Add(Label5)
+        GroupBox1.Controls.Add(Label4)
+        GroupBox1.Location = New Point(6, 307)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Size = New Size(433, 174)
+        GroupBox1.TabIndex = 17
+        GroupBox1.TabStop = False
+        GroupBox1.Text = "Status"
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Font = New Font("Segoe UI", 7.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label6.Location = New Point(12, 100)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(157, 15)
+        Label6.TabIndex = 17
+        Label6.Text = "------------------------------"
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        Label2.Location = New Point(12, 23)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(131, 17)
+        Label2.TabIndex = 10
+        Label2.Text = "{0} Instances Running"
+        ' 
+        ' ProgressBar1
+        ' 
+        ProgressBar1.ForeColor = Color.CornflowerBlue
+        ProgressBar1.Location = New Point(12, 136)
+        ProgressBar1.Name = "ProgressBar1"
+        ProgressBar1.Size = New Size(390, 21)
+        ProgressBar1.TabIndex = 12
+        ' 
+        ' LBR_STAT
+        ' 
+        LBR_STAT.AutoSize = True
+        LBR_STAT.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        LBR_STAT.ForeColor = Color.Green
+        LBR_STAT.Location = New Point(12, 116)
+        LBR_STAT.Name = "LBR_STAT"
+        LBR_STAT.Size = New Size(144, 17)
+        LBR_STAT.TabIndex = 16
+        LBR_STAT.Text = "Checking for ffmpeg.dll"
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        Label3.Location = New Point(12, 43)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(212, 17)
+        Label3.TabIndex = 11
+        Label3.Text = "{0} Instances Running (conhost.exe)"
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        Label5.Location = New Point(12, 83)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(103, 17)
+        Label5.TabIndex = 14
+        Label5.Text = "{0} All Processes"
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        Label4.Location = New Point(12, 63)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(191, 17)
+        Label4.TabIndex = 13
+        Label4.Text = "{0} Instances Running (cmd.exe)"
+        ' 
+        ' Button4
+        ' 
+        Button4.Location = New Point(381, 198)
+        Button4.Name = "Button4"
+        Button4.Size = New Size(58, 29)
+        Button4.TabIndex = 9
+        Button4.Text = "..."
+        Button4.UseVisualStyleBackColor = True
+        ' 
+        ' TextBox2
+        ' 
+        TextBox2.Location = New Point(6, 199)
+        TextBox2.Name = "TextBox2"
+        TextBox2.PlaceholderText = "Save File Path"
+        TextBox2.ReadOnly = True
+        TextBox2.Size = New Size(369, 27)
+        TextBox2.TabIndex = 8
+        ' 
+        ' CheckBox2
+        ' 
+        CheckBox2.AutoSize = True
+        CheckBox2.Checked = True
+        CheckBox2.CheckState = CheckState.Checked
+        CheckBox2.Location = New Point(167, 135)
+        CheckBox2.Name = "CheckBox2"
+        CheckBox2.Size = New Size(97, 24)
+        CheckBox2.TabIndex = 7
+        CheckBox2.Text = "Single file"
+        CheckBox2.UseVisualStyleBackColor = True
+        ' 
+        ' Button3
+        ' 
+        Button3.Location = New Point(381, 164)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(58, 29)
+        Button3.TabIndex = 6
+        Button3.Text = "..."
+        Button3.UseVisualStyleBackColor = True
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Location = New Point(6, 165)
+        TextBox1.Name = "TextBox1"
+        TextBox1.PlaceholderText = "File / Foloer name"
+        TextBox1.ReadOnly = True
+        TextBox1.Size = New Size(369, 27)
+        TextBox1.TabIndex = 5
+        ' 
+        ' ListBox1
+        ' 
+        ListBox1.FormattingEnabled = True
+        ListBox1.ItemHeight = 20
+        ListBox1.Location = New Point(3, 26)
+        ListBox1.Name = "ListBox1"
+        ListBox1.Size = New Size(439, 104)
+        ListBox1.TabIndex = 4
+        ' 
+        ' Button2
+        ' 
+        Button2.Enabled = False
+        Button2.Location = New Point(261, 229)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(178, 29)
+        Button2.TabIndex = 3
+        Button2.Text = "Stop"
+        Button2.UseVisualStyleBackColor = True
+        ' 
+        ' Button1
+        ' 
+        Button1.Enabled = False
+        Button1.Location = New Point(3, 229)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(252, 29)
+        Button1.TabIndex = 2
+        Button1.Text = "Start"
+        Button1.UseVisualStyleBackColor = True
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Location = New Point(6, 3)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(92, 20)
+        Label1.TabIndex = 1
+        Label1.Text = "MP4 to AMV"
+        ' 
+        ' CheckBox1
+        ' 
+        CheckBox1.AutoSize = True
+        CheckBox1.Enabled = False
+        CheckBox1.Location = New Point(6, 135)
+        CheckBox1.Name = "CheckBox1"
+        CheckBox1.Size = New Size(143, 24)
+        CheckBox1.TabIndex = 0
+        CheckBox1.Text = "CPU & Ram limiter"
+        CheckBox1.UseVisualStyleBackColor = True
+        ' 
+        ' TabPage2
+        ' 
+        TabPage2.Controls.Add(GroupBox3)
+        TabPage2.Location = New Point(4, 29)
+        TabPage2.Name = "TabPage2"
+        TabPage2.Padding = New Padding(3)
+        TabPage2.Size = New Size(448, 493)
+        TabPage2.TabIndex = 1
+        TabPage2.Text = "Help"
+        TabPage2.UseVisualStyleBackColor = True
+        ' 
+        ' GroupBox3
+        ' 
+        GroupBox3.Controls.Add(Label8)
+        GroupBox3.Location = New Point(6, 6)
+        GroupBox3.Name = "GroupBox3"
+        GroupBox3.Size = New Size(436, 463)
+        GroupBox3.TabIndex = 0
+        GroupBox3.TabStop = False
+        GroupBox3.Text = "Info"
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Location = New Point(6, 23)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(92, 20)
+        Label8.TabIndex = 0
+        Label8.Text = "MP4 to AMV"
+        ' 
+        ' LinkLabel1
+        ' 
+        LinkLabel1.AutoSize = True
+        LinkLabel1.Location = New Point(226, 23)
+        LinkLabel1.Name = "LinkLabel1"
+        LinkLabel1.Size = New Size(158, 20)
+        LinkLabel1.TabIndex = 20
+        LinkLabel1.TabStop = True
+        LinkLabel1.Text = "Discord Acc name: zv8"
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Location = New Point(44, 23)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(163, 20)
+        Label7.TabIndex = 19
+        Label7.Text = "©2023 zv800 / z3ck200"
+        ' 
+        ' Github_BTN
+        ' 
+        Github_BTN.BackgroundImage = My.Resources.Resources.GitHub_Mark_ea2971cee799
+        Github_BTN.BackgroundImageLayout = ImageLayout.Stretch
+        Github_BTN.FlatAppearance.BorderSize = 0
+        Github_BTN.FlatStyle = FlatStyle.Flat
+        Github_BTN.ImageAlign = ContentAlignment.MiddleLeft
+        Github_BTN.Location = New Point(4, 16)
+        Github_BTN.Name = "Github_BTN"
+        Github_BTN.Size = New Size(37, 34)
+        Github_BTN.TabIndex = 18
+        Github_BTN.UseVisualStyleBackColor = True
+        ' 
+        ' Timer1
+        ' 
+        Timer1.Interval = 1
+        ' 
+        ' MFS
+        ' 
+        ' 
+        ' Timer2
+        ' 
+        Timer2.Enabled = True
+        Timer2.Interval = 1
+        ' 
+        ' GroupBox2
+        ' 
+        GroupBox2.Controls.Add(LinkLabel1)
+        GroupBox2.Controls.Add(Label7)
+        GroupBox2.Controls.Add(Github_BTN)
+        GroupBox2.Location = New Point(12, 528)
+        GroupBox2.Name = "GroupBox2"
+        GroupBox2.Size = New Size(456, 55)
+        GroupBox2.TabIndex = 21
+        GroupBox2.TabStop = False
+        ' 
+        ' Timeer
+        ' 
+        Timeer.Interval = 1
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(361, 0)
+        ClientSize = New Size(475, 586)
+        Controls.Add(GroupBox2)
+        Controls.Add(TabControl1)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        MaximumSize = New Size(493, 633)
+        MinimumSize = New Size(493, 633)
         Name = "Form1"
-        ShowInTaskbar = False
-        Text = "Main converter Window"
-        WindowState = FormWindowState.Minimized
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "MP4 to AMV https://zv800.com"
+        TabControl1.ResumeLayout(False)
+        TabPage1.ResumeLayout(False)
+        TabPage1.PerformLayout()
+        GroupBox1.ResumeLayout(False)
+        GroupBox1.PerformLayout()
+        TabPage2.ResumeLayout(False)
+        GroupBox3.ResumeLayout(False)
+        GroupBox3.PerformLayout()
+        GroupBox2.ResumeLayout(False)
+        GroupBox2.PerformLayout()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents Label1 As Label
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents Button3 As Button
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Button4 As Button
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents MFS As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents LBR_STAT As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Timer2 As Timer
+    Friend WithEvents Github_BTN As Button
+    Friend WithEvents Label7 As Label
+    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents CheckBox3 As CheckBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Timeer As Timer
 End Class

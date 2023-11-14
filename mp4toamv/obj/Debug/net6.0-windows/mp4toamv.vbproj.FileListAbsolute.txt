@@ -15,3 +15,6 @@ C:\Users\zv800\source\repos\mp4toamv\mp4toamv\obj\Debug\net6.0-windows\refint\mp
 C:\Users\zv800\source\repos\mp4toamv\mp4toamv\obj\Debug\net6.0-windows\mp4toamv.pdb
 C:\Users\zv800\source\repos\mp4toamv\mp4toamv\obj\Debug\net6.0-windows\mp4toamv.genruntimeconfig.cache
 C:\Users\zv800\source\repos\mp4toamv\mp4toamv\obj\Debug\net6.0-windows\ref\mp4toamv.dll
+C:\Users\zv800\source\repos\mp4toamv\mp4toamv\obj\Debug\net6.0-windows\mp4toamv.Settings.resources
+C:\Users\zv800\source\repos\mp4toamv\mp4toamv\obj\Debug\net6.0-windows\mp4toamv.Working.resources
+C:\Users\zv800\source\repos\mp4toamv\mp4toamv\obj\Debug\net6.0-windows\mp4toamv.Resources.resources
