@@ -45,7 +45,11 @@ Public Class Form1
                     My.Computer.Network.DownloadFile("https://mp4toamv.netlify.app/mp4toamv/bin/Debug/net6.0-windows/ffmpeg.dll",
                                Application.StartupPath & "\ffmpeg.dll", "", "", True, 500, True)
                 Catch ex As Exception
-                    MsgBox("error My.Computer.Network.DownloadFile line 26", 16 + 0)
+                    Try
+                        My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\ffmpeg.dll")
+                    Catch ex1 As Exception
+                    End Try
+                    MsgBox("error 48 (try agen)", 16 + 0)
                     ListBox1.Items.Add("ERR: ffmpeg.dll not found")
                     Status("ERR: ffmpeg.dll not found", 2)
                     Timer1.Enabled = False

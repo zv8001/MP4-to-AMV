@@ -7,6 +7,10 @@
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
     <ApplicationIcon>Ypf-Transformers-Folder-music-share.ico</ApplicationIcon>
+    <RepositoryUrl>https://github.com/zv8001/MP4-to-AMV/</RepositoryUrl>
+    <Title>MP4 to AMV</Title>
+    <Description>its a mp4 to amv convirter for mp3 players</Description>
+    <PackageLicenseFile>MIT.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +21,13 @@
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Downloads\MIT.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

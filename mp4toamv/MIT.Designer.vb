@@ -68,7 +68,7 @@ Partial Class MIT
         ' MITLicenseToolStripMenuItem
         ' 
         MITLicenseToolStripMenuItem.Name = "MITLicenseToolStripMenuItem"
-        MITLicenseToolStripMenuItem.Size = New Size(224, 26)
+        MITLicenseToolStripMenuItem.Size = New Size(169, 26)
         MITLicenseToolStripMenuItem.Text = "MIT License"
         ' 
         ' MIT
