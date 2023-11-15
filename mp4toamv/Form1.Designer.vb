@@ -52,6 +52,9 @@ Partial Class Form1
         CheckBox1 = New CheckBox()
         TabPage2 = New TabPage()
         GroupBox3 = New GroupBox()
+        RichTextBox1 = New RichTextBox()
+        Label10 = New Label()
+        Label9 = New Label()
         Label8 = New Label()
         LinkLabel1 = New LinkLabel()
         Label7 = New Label()
@@ -61,12 +64,23 @@ Partial Class Form1
         Timer2 = New Timer(components)
         GroupBox2 = New GroupBox()
         Timeer = New Timer(components)
+        MenuStrip1 = New MenuStrip()
+        FileToolStripMenuItem = New ToolStripMenuItem()
+        SettingsToolStripMenuItem = New ToolStripMenuItem()
+        DarkModeToolStripMenuItem = New ToolStripMenuItem()
+        RunToolStripMenuItem = New ToolStripMenuItem()
+        StartToolStripMenuItem = New ToolStripMenuItem()
+        StopToolStripMenuItem = New ToolStripMenuItem()
+        HelpToolStripMenuItem = New ToolStripMenuItem()
+        FFMPEGToolStripMenuItem = New ToolStripMenuItem()
+        MP4ToAmvToolStripMenuItem = New ToolStripMenuItem()
         TabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         GroupBox1.SuspendLayout()
         TabPage2.SuspendLayout()
         GroupBox3.SuspendLayout()
         GroupBox2.SuspendLayout()
+        MenuStrip1.SuspendLayout()
         SuspendLayout()
         ' 
         ' BackgroundWorker1
@@ -76,14 +90,15 @@ Partial Class Form1
         ' 
         TabControl1.Controls.Add(TabPage1)
         TabControl1.Controls.Add(TabPage2)
-        TabControl1.Location = New Point(12, 12)
+        TabControl1.Location = New Point(12, 29)
         TabControl1.Name = "TabControl1"
         TabControl1.SelectedIndex = 0
-        TabControl1.Size = New Size(456, 526)
+        TabControl1.Size = New Size(456, 509)
         TabControl1.TabIndex = 3
         ' 
         ' TabPage1
         ' 
+        TabPage1.BackColor = Color.Transparent
         TabPage1.Controls.Add(CheckBox3)
         TabPage1.Controls.Add(TextBox3)
         TabPage1.Controls.Add(GroupBox1)
@@ -100,10 +115,9 @@ Partial Class Form1
         TabPage1.Location = New Point(4, 29)
         TabPage1.Name = "TabPage1"
         TabPage1.Padding = New Padding(3)
-        TabPage1.Size = New Size(448, 493)
+        TabPage1.Size = New Size(448, 476)
         TabPage1.TabIndex = 0
         TabPage1.Text = "Converter"
-        TabPage1.UseVisualStyleBackColor = True
         ' 
         ' CheckBox3
         ' 
@@ -137,7 +151,7 @@ Partial Class Form1
         GroupBox1.Controls.Add(Label4)
         GroupBox1.Location = New Point(6, 307)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(433, 174)
+        GroupBox1.Size = New Size(435, 174)
         GroupBox1.TabIndex = 17
         GroupBox1.TabStop = False
         GroupBox1.Text = "Status"
@@ -145,7 +159,7 @@ Partial Class Form1
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 7.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label6.Font = New Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point)
         Label6.Location = New Point(12, 100)
         Label6.Name = "Label6"
         Label6.Size = New Size(157, 15)
@@ -213,7 +227,7 @@ Partial Class Form1
         ' 
         ' Button4
         ' 
-        Button4.Location = New Point(381, 198)
+        Button4.Location = New Point(383, 199)
         Button4.Name = "Button4"
         Button4.Size = New Size(58, 29)
         Button4.TabIndex = 9
@@ -226,7 +240,7 @@ Partial Class Form1
         TextBox2.Name = "TextBox2"
         TextBox2.PlaceholderText = "Save File Path"
         TextBox2.ReadOnly = True
-        TextBox2.Size = New Size(369, 27)
+        TextBox2.Size = New Size(371, 27)
         TextBox2.TabIndex = 8
         ' 
         ' CheckBox2
@@ -243,7 +257,7 @@ Partial Class Form1
         ' 
         ' Button3
         ' 
-        Button3.Location = New Point(381, 164)
+        Button3.Location = New Point(383, 163)
         Button3.Name = "Button3"
         Button3.Size = New Size(58, 29)
         Button3.TabIndex = 6
@@ -256,7 +270,7 @@ Partial Class Form1
         TextBox1.Name = "TextBox1"
         TextBox1.PlaceholderText = "File / Foloer name"
         TextBox1.ReadOnly = True
-        TextBox1.Size = New Size(369, 27)
+        TextBox1.Size = New Size(371, 27)
         TextBox1.TabIndex = 5
         ' 
         ' ListBox1
@@ -265,15 +279,15 @@ Partial Class Form1
         ListBox1.ItemHeight = 20
         ListBox1.Location = New Point(3, 26)
         ListBox1.Name = "ListBox1"
-        ListBox1.Size = New Size(439, 104)
+        ListBox1.Size = New Size(438, 104)
         ListBox1.TabIndex = 4
         ' 
         ' Button2
         ' 
         Button2.Enabled = False
-        Button2.Location = New Point(261, 229)
+        Button2.Location = New Point(311, 229)
         Button2.Name = "Button2"
-        Button2.Size = New Size(178, 29)
+        Button2.Size = New Size(130, 29)
         Button2.TabIndex = 3
         Button2.Text = "Stop"
         Button2.UseVisualStyleBackColor = True
@@ -283,7 +297,7 @@ Partial Class Form1
         Button1.Enabled = False
         Button1.Location = New Point(3, 229)
         Button1.Name = "Button1"
-        Button1.Size = New Size(252, 29)
+        Button1.Size = New Size(302, 29)
         Button1.TabIndex = 2
         Button1.Text = "Start"
         Button1.UseVisualStyleBackColor = True
@@ -316,13 +330,16 @@ Partial Class Form1
         TabPage2.Location = New Point(4, 29)
         TabPage2.Name = "TabPage2"
         TabPage2.Padding = New Padding(3)
-        TabPage2.Size = New Size(448, 493)
+        TabPage2.Size = New Size(448, 476)
         TabPage2.TabIndex = 1
         TabPage2.Text = "Help"
         TabPage2.UseVisualStyleBackColor = True
         ' 
         ' GroupBox3
         ' 
+        GroupBox3.Controls.Add(RichTextBox1)
+        GroupBox3.Controls.Add(Label10)
+        GroupBox3.Controls.Add(Label9)
         GroupBox3.Controls.Add(Label8)
         GroupBox3.Location = New Point(6, 6)
         GroupBox3.Name = "GroupBox3"
@@ -331,19 +348,47 @@ Partial Class Form1
         GroupBox3.TabStop = False
         GroupBox3.Text = "Info"
         ' 
+        ' RichTextBox1
+        ' 
+        RichTextBox1.Location = New Point(17, 319)
+        RichTextBox1.Name = "RichTextBox1"
+        RichTextBox1.Size = New Size(407, 123)
+        RichTextBox1.TabIndex = 22
+        RichTextBox1.Text = "©2023 zv800 / z3ck200" & vbLf & "Discord account name: zv8" & vbLf & "github page: https://github.com/zv8001/MP4-to-AMV" & vbLf & "website https://www.zv800.com" & vbLf & "FFMPEG: http://ffmpeg.org/" & vbLf & vbLf
+        ' 
+        ' Label10
+        ' 
+        Label10.AutoSize = True
+        Label10.Font = New Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point)
+        Label10.Location = New Point(17, 143)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(310, 153)
+        Label10.TabIndex = 21
+        Label10.Text = resources.GetString("Label10.Text")
+        ' 
+        ' Label9
+        ' 
+        Label9.AutoSize = True
+        Label9.Location = New Point(0, 51)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(352, 80)
+        Label9.TabIndex = 1
+        Label9.Text = "MP4 to AMV to a conviter for any video file to amv. " & vbCrLf & "A format that mp3 / mp4 players use." & vbCrLf & vbCrLf & vbCrLf
+        ' 
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Location = New Point(6, 23)
+        Label8.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Label8.Location = New Point(0, 23)
         Label8.Name = "Label8"
-        Label8.Size = New Size(92, 20)
+        Label8.Size = New Size(133, 28)
         Label8.TabIndex = 0
         Label8.Text = "MP4 to AMV"
         ' 
         ' LinkLabel1
         ' 
         LinkLabel1.AutoSize = True
-        LinkLabel1.Location = New Point(226, 23)
+        LinkLabel1.Location = New Point(244, 23)
         LinkLabel1.Name = "LinkLabel1"
         LinkLabel1.Size = New Size(158, 20)
         LinkLabel1.TabIndex = 20
@@ -399,15 +444,87 @@ Partial Class Form1
         ' 
         Timeer.Interval = 1
         ' 
+        ' MenuStrip1
+        ' 
+        MenuStrip1.ImageScalingSize = New Size(20, 20)
+        MenuStrip1.Items.AddRange(New ToolStripItem() {FileToolStripMenuItem, HelpToolStripMenuItem})
+        MenuStrip1.Location = New Point(0, 0)
+        MenuStrip1.Name = "MenuStrip1"
+        MenuStrip1.Size = New Size(475, 28)
+        MenuStrip1.TabIndex = 22
+        MenuStrip1.Text = "MenuStrip1"
+        ' 
+        ' FileToolStripMenuItem
+        ' 
+        FileToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {SettingsToolStripMenuItem, RunToolStripMenuItem})
+        FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        FileToolStripMenuItem.Size = New Size(46, 24)
+        FileToolStripMenuItem.Text = "File"
+        ' 
+        ' SettingsToolStripMenuItem
+        ' 
+        SettingsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {DarkModeToolStripMenuItem})
+        SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        SettingsToolStripMenuItem.Size = New Size(145, 26)
+        SettingsToolStripMenuItem.Text = "Settings"
+        ' 
+        ' DarkModeToolStripMenuItem
+        ' 
+        DarkModeToolStripMenuItem.Name = "DarkModeToolStripMenuItem"
+        DarkModeToolStripMenuItem.Size = New Size(210, 26)
+        DarkModeToolStripMenuItem.Text = "DarkMode toggle"
+        ' 
+        ' RunToolStripMenuItem
+        ' 
+        RunToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {StartToolStripMenuItem, StopToolStripMenuItem})
+        RunToolStripMenuItem.Name = "RunToolStripMenuItem"
+        RunToolStripMenuItem.Size = New Size(145, 26)
+        RunToolStripMenuItem.Text = "Run"
+        ' 
+        ' StartToolStripMenuItem
+        ' 
+        StartToolStripMenuItem.Name = "StartToolStripMenuItem"
+        StartToolStripMenuItem.Size = New Size(123, 26)
+        StartToolStripMenuItem.Text = "Start"
+        ' 
+        ' StopToolStripMenuItem
+        ' 
+        StopToolStripMenuItem.Name = "StopToolStripMenuItem"
+        StopToolStripMenuItem.Size = New Size(123, 26)
+        StopToolStripMenuItem.Text = "Stop"
+        ' 
+        ' HelpToolStripMenuItem
+        ' 
+        HelpToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {FFMPEGToolStripMenuItem, MP4ToAmvToolStripMenuItem})
+        HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        HelpToolStripMenuItem.Size = New Size(55, 24)
+        HelpToolStripMenuItem.Text = "Help"
+        ' 
+        ' FFMPEGToolStripMenuItem
+        ' 
+        FFMPEGToolStripMenuItem.Name = "FFMPEGToolStripMenuItem"
+        FFMPEGToolStripMenuItem.Size = New Size(171, 26)
+        FFMPEGToolStripMenuItem.Text = "FFMPEG"
+        ' 
+        ' MP4ToAmvToolStripMenuItem
+        ' 
+        MP4ToAmvToolStripMenuItem.Name = "MP4ToAmvToolStripMenuItem"
+        MP4ToAmvToolStripMenuItem.Size = New Size(171, 26)
+        MP4ToAmvToolStripMenuItem.Text = "MP4 to amv"
+        ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(475, 586)
         Controls.Add(GroupBox2)
         Controls.Add(TabControl1)
+        Controls.Add(MenuStrip1)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        MainMenuStrip = MenuStrip1
+        MaximizeBox = False
         MaximumSize = New Size(493, 633)
+        MinimizeBox = False
         MinimumSize = New Size(493, 633)
         Name = "Form1"
         StartPosition = FormStartPosition.CenterScreen
@@ -422,7 +539,10 @@ Partial Class Form1
         GroupBox3.PerformLayout()
         GroupBox2.ResumeLayout(False)
         GroupBox2.PerformLayout()
+        MenuStrip1.ResumeLayout(False)
+        MenuStrip1.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
@@ -462,4 +582,17 @@ Partial Class Form1
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents Label8 As Label
     Friend WithEvents Timeer As Timer
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DarkModeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RunToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StartToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StopToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FFMPEGToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MP4ToAmvToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents RichTextBox1 As RichTextBox
 End Class

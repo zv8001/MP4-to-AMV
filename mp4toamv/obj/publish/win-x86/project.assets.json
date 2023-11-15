@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zv800\\source\\repos\\mp4toamv\\mp4toamv\\mp4toamv.vbproj",
+      "projectUniqueName": "C:\\Users\\zv800\\Documents\\GitHub\\MP4-to-AMV\\mp4toamv\\mp4toamv.vbproj",
       "projectName": "mp4toamv",
-      "projectPath": "C:\\Users\\zv800\\source\\repos\\mp4toamv\\mp4toamv\\mp4toamv.vbproj",
+      "projectPath": "C:\\Users\\zv800\\Documents\\GitHub\\MP4-to-AMV\\mp4toamv\\mp4toamv.vbproj",
       "packagesPath": "C:\\Users\\zv800\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zv800\\source\\repos\\mp4toamv\\mp4toamv\\obj\\publish\\win-x86\\",
+      "outputPath": "C:\\Users\\zv800\\Documents\\GitHub\\MP4-to-AMV\\mp4toamv\\obj\\publish\\win-x86\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\zv800\\AppData\\Roaming\\NuGet\\NuGet.Config",
