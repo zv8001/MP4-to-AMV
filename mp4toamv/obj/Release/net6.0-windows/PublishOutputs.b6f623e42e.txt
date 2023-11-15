@@ -1,0 +1,5 @@
+C:\Users\zv800\source\repos\mp4toamv\mp4toamv\bin\Release\net6.0-windows\publish\mp4toamv.exe
+C:\Users\zv800\source\repos\mp4toamv\mp4toamv\bin\Release\net6.0-windows\publish\mp4toamv.dll
+C:\Users\zv800\source\repos\mp4toamv\mp4toamv\bin\Release\net6.0-windows\publish\mp4toamv.deps.json
+C:\Users\zv800\source\repos\mp4toamv\mp4toamv\bin\Release\net6.0-windows\publish\mp4toamv.runtimeconfig.json
+C:\Users\zv800\source\repos\mp4toamv\mp4toamv\bin\Release\net6.0-windows\publish\mp4toamv.pdb

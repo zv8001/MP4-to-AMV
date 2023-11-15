@@ -12,22 +12,33 @@ Public Class Form1
     Dim args As Boolean = False
     Dim MainIn As Integer = 0
     Dim FullProRUnCalc = 0
+    Dim MaininstanceCount = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         If Not My.Computer.FileSystem.FileExists(Application.StartupPath & "\ffmpeg.dll") Then
-            ListBox1.Items.Add("ERR: ffmpeg.dll not found")
-            Status("ERR: ffmpeg.dll not found", 2)
-            Timer1.Enabled = False
-            Button1.Enabled = False
-            Dim result As DialogResult = MessageBox.Show("Do you want to download ffmpeg.dll?", "mp4toamv https://www.zv800.com", MessageBoxButtons.YesNo)
+
+            Dim result As DialogResult = MessageBox.Show("FFMPEG.DLL NOT FOUND. Do you want to download ffmpeg.dll?", "mp4toamv https://www.zv800.com", MessageBoxButtons.YesNo)
             If result = DialogResult.Yes Then
-                My.Computer.Network.DownloadFile("https://mp4toamv.netlify.app/mp4toamv/bin/Debug/net6.0-windows/ffmpeg.dll", Application.StartupPath & "\ffmpeg.dll")
-                MsgBox("Restart the program")
-                Me.Close()
+                Try
+                    My.Computer.Network.DownloadFile("https://mp4toamv.netlify.app/mp4toamv/bin/Debug/net6.0-windows/ffmpeg.dll",
+                               Application.StartupPath & "\ffmpeg.dll", "", "", True, 500, True)
+                Catch ex As Exception
+                    MsgBox("error My.Computer.Network.DownloadFile line 26", 16 + 0)
+                    ListBox1.Items.Add("ERR: ffmpeg.dll not found")
+                    Status("ERR: ffmpeg.dll not found", 2)
+                    Timer1.Enabled = False
+                    Button1.Enabled = False
+                End Try
             ElseIf result = DialogResult.No Then
-
+                ListBox1.Items.Add("ERR: ffmpeg.dll not found")
+                Status("ERR: ffmpeg.dll not found", 2)
+                Timer1.Enabled = False
+                Button1.Enabled = False
             End If
-
+        Else
+            Threading.Thread.Sleep(300)
+            ListBox1.Items.Add("OK: ffmpeg.dll found")
+            Status("OK: ffmpeg.dll found", 0)
         End If
     End Sub
 
@@ -71,6 +82,7 @@ Public Class Form1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Time = 0
         If CheckBox2.Checked = True Then
+
             If TextBox2.Text = "" Then
                 MsgBox("ERROR: Selcect an output file", 16 + 0, "mp4toamv https://www.zv800.com")
             Else
@@ -88,6 +100,7 @@ Public Class Form1
                 End If
                 Status("Starting... " & TextBox1.Text, 1)
                 ListBox1.Items.Add("Starting... " & TextBox1.Text)
+
                 If args = True Then
                     MyUtilities.RunCommandCom("ffmpeg.dll -i """ & TextBox1.Text & """ " & TextBox3.Text & " """ & SaveFileDialog1.FileName & """", "/W", False, True)
                 Else
@@ -98,6 +111,8 @@ Public Class Form1
                 Timer1.Start()
             End If
         Else
+            Button1.Enabled = False
+            Button2.Enabled = True
             Dim di As New DirectoryInfo(FolderBrowserDialog1.SelectedPath)
             Dim fiArr As FileInfo() = di.GetFiles()
             Dim fri As FileInfo
@@ -119,6 +134,7 @@ Public Class Form1
             Timer1.Start()
             For Each fri In fiArr
                 Try
+
                     Button1.Enabled = False
                     Button2.Enabled = True
                     ListBox1.Items.Add("Checking if " & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv Exists")
@@ -142,7 +158,11 @@ Public Class Form1
 
                         MyUtilities.RunCommandCom("ffmpeg.dll -i """ & fri.FullName & """ -c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882 """ & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv""", "/W", False, True)
                     End If
-
+                    If CheckBox1.Checked = True Then
+                        'While Process.GetProcessesByName("ffmpeg.dll").Count() > 5
+                        'Wait
+                        '   End While
+                    End If
 
                 Catch ex As Exception
 
@@ -179,6 +199,7 @@ Public Class Form1
 
 
         Dim instanceCount As Integer = Process.GetProcessesByName("ffmpeg.dll").Count()
+        MaininstanceCount = instanceCount
         ' MsgBox(instanceCount)
         Label2.Text = String.Format("{0} Instances Running (FFMPEG)", instanceCount.ToString())
         Dim instanceCount2 As Integer = Process.GetProcessesByName("conhost").Count()
@@ -361,5 +382,9 @@ Public Class Form1
 
     Private Sub Timeer_Tick(sender As Object, e As EventArgs) Handles Timeer.Tick
         Time = Time + 1
+    End Sub
+
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
+
     End Sub
 End Class

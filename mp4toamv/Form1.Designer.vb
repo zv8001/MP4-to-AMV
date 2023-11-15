@@ -300,6 +300,8 @@ Partial Class Form1
         ' CheckBox1
         ' 
         CheckBox1.AutoSize = True
+        CheckBox1.Checked = True
+        CheckBox1.CheckState = CheckState.Checked
         CheckBox1.Enabled = False
         CheckBox1.Location = New Point(6, 135)
         CheckBox1.Name = "CheckBox1"

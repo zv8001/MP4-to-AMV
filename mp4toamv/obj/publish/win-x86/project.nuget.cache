@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "ROmt/Gc4lksihsFUyIAmXTFWp5umdlSRta75Hlo8wxWXOY0TwnUe+kpvwogRzzACaIcWffuQCEqYK+2bQQ5NWg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\zv800\\source\\repos\\mp4toamv\\mp4toamv\\mp4toamv.vbproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zv800\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.20\\microsoft.netcore.app.runtime.win-x86.6.0.20.nupkg.sha512",
+    "C:\\Users\\zv800\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.20\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.20.nupkg.sha512",
+    "C:\\Users\\zv800\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.20\\microsoft.aspnetcore.app.runtime.win-x86.6.0.20.nupkg.sha512",
+    "C:\\Users\\zv800\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\6.0.20\\microsoft.netcore.app.crossgen2.win-x64.6.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}
