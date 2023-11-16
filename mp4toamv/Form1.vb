@@ -5,6 +5,7 @@ Imports System.Net.WebRequestMethods
 Imports System.Diagnostics
 Imports System.Reflection.Emit
 Imports System.Text
+Imports System.Reflection.Metadata.Ecma335
 
 'MIT License
 
@@ -36,6 +37,8 @@ Public Class Form1
     Dim MaininstanceCount = 0
     Dim Running = False
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Refeshlogfile()
+        ffmpegpath_txt.Text = Application.StartupPath & "\ffmpeg.dll"
         MIT.ShowDialog()
         If Not My.Computer.FileSystem.FileExists(Application.StartupPath & "\ffmpeg.dll") Then
 
@@ -49,6 +52,7 @@ Public Class Form1
                         My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\ffmpeg.dll")
                     Catch ex1 As Exception
                     End Try
+
                     MsgBox("error 48 (try agen)", 16 + 0)
                     ListBox1.Items.Add("ERR: ffmpeg.dll not found")
                     Status("ERR: ffmpeg.dll not found", 2)
@@ -66,9 +70,11 @@ Public Class Form1
             ListBox1.Items.Add("OK: ffmpeg.dll found")
             Status("OK: ffmpeg.dll found", 0)
         End If
+        Load_Settings()
     End Sub
 
     Sub Run()
+        Refeshlogfile()
         Time = 0
 
         If CheckBox2.Checked = True Then
@@ -92,9 +98,9 @@ Public Class Form1
                 ListBox1.Items.Add("Starting... " & TextBox1.Text)
 
                 If args = True Then
-                    MyUtilities.RunCommandCom("ffmpeg.dll -i """ & TextBox1.Text & """ " & TextBox3.Text & " """ & SaveFileDialog1.FileName & """", "/W", False, True)
+                    MyUtilities.RunCommandCom(ffmpegpath_txt.Text & " -i """ & TextBox1.Text & """ " & TextBox3.Text & " """ & SaveFileDialog1.FileName & """", "/W", False, CheckBox7.Checked)
                 Else
-                    MyUtilities.RunCommandCom("ffmpeg.dll -i """ & TextBox1.Text & """ -c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882 """ & SaveFileDialog1.FileName & """", "/W", False, True)
+                    MyUtilities.RunCommandCom(ffmpegpath_txt.Text & " -i """ & TextBox1.Text & """ -c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882 """ & SaveFileDialog1.FileName & """", "/W", False, CheckBox7.Checked)
                 End If
 
                 Threading.Thread.Sleep(3000)
@@ -118,49 +124,59 @@ Public Class Form1
             Next fri
             FullProRUnCalc = FullProRUnCalc * 2
             Status(FullProRUnCalc & " processes needed", 2)
-            ListBox1.Items.Add("Starting")
-
-            Dim files As Integer = 0
-
-            Timer1.Start()
-            For Each fri In fiArr
-                Try
-                    Running = True
-                    Button1.Enabled = False
-                    Button2.Enabled = True
-                    ListBox1.Items.Add("Checking if " & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv Exists")
-
-                    If My.Computer.FileSystem.FileExists(FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv") Then
-                        ListBox1.Items.Add("Deleteing: " & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv")
-
-                        My.Computer.FileSystem.DeleteFile(FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv")
-                    End If
-                    Status("Starting FFMPEG.EXE", 0)
-                    ListBox1.Items.Add("Starting FFMPEG.EXE")
-                    If args = True Then
-                        ListBox1.Items.Add("Useing Args (MODED): " & "ffmpeg.dll -i """ & fri.FullName & """" & TextBox3.Text & """" & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv""")
-                    Else
-                        ListBox1.Items.Add("Useing Args: " & "ffmpeg.dll -i """ & fri.FullName & """ -c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882 """ & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv""")
-                    End If
-                    ListBox1.Items.Add("Converting: """ & fri.FullName & """ >>>Useing ffmpeg<<<")
-                    If args = True Then
-                        MyUtilities.RunCommandCom(" ffmpeg.dll -i """ & fri.FullName & """ " & TextBox3.Text & " """ & FolderBrowserDialog1.SelectedPath & " \mp4toamv_output\" & fri.Name & " .amv""", "/W", False, True)
-                    Else
-
-                        MyUtilities.RunCommandCom("ffmpeg.dll -i """ & fri.FullName & """ -c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882 """ & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv""", "/W", False, True)
-                    End If
-                    If CheckBox1.Checked = True Then
-                        'While Process.GetProcessesByName("ffmpeg.dll").Count() > 5
-                        'Wait
-                        '   End While
-                    End If
-
-                Catch ex As Exception
-
-                End Try
-            Next fri
-
+            If FullProRUnCalc > 40 Then
+                If MsgBox("Warning: over 40 processes needed this can lag / crash your pc if it is not powerfull enough", 48 + 1) = MsgBoxResult.Cancel Then
+                    Stop1()
+                Else
+                    StartCon()
+                End If
+            Else
+                StartCon()
+            End If
         End If
+    End Sub
+    Sub StartCon()
+        ListBox1.Items.Add("Starting")
+        Dim di As New DirectoryInfo(FolderBrowserDialog1.SelectedPath)
+        Dim files As Integer = 0
+        Dim fiArr As FileInfo() = di.GetFiles()
+        Timer1.Start()
+        For Each fri In fiArr
+            Try
+                Running = True
+                Button1.Enabled = False
+                Button2.Enabled = True
+                ListBox1.Items.Add("Checking if " & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv Exists")
+
+                If My.Computer.FileSystem.FileExists(FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv") Then
+                    ListBox1.Items.Add("Deleteing: " & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv")
+
+                    My.Computer.FileSystem.DeleteFile(FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv")
+                End If
+                Status("Starting FFMPEG.EXE", 0)
+                ListBox1.Items.Add("Starting FFMPEG.EXE")
+                If args = True Then
+                    ListBox1.Items.Add("Useing Args (MODED): " & "ffmpeg.dll -i """ & fri.FullName & """" & TextBox3.Text & """" & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv""")
+                Else
+                    ListBox1.Items.Add("Useing Args: " & "ffmpeg.dll -i """ & fri.FullName & """ -c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882 """ & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv""")
+                End If
+                ListBox1.Items.Add("Converting: """ & fri.FullName & """ >>>Useing ffmpeg<<<")
+                If args = True Then
+                    MyUtilities.RunCommandCom(ffmpegpath_txt.Text & " -i """ & fri.FullName & """ " & TextBox3.Text & " """ & FolderBrowserDialog1.SelectedPath & " \mp4toamv_output\" & fri.Name & " .amv""", "/W", False, CheckBox7.Checked)
+                Else
+
+                    MyUtilities.RunCommandCom(ffmpegpath_txt.Text & " -i """ & fri.FullName & """ -c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882 """ & FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv""", "/W", False, CheckBox7.Checked)
+                End If
+                If CheckBox1.Checked = True Then
+                    'While Process.GetProcessesByName("ffmpeg.dll").Count() > 5
+                    'Wait
+                    '   End While
+                End If
+
+            Catch ex As Exception
+
+            End Try
+        Next fri
     End Sub
     Sub Stop1()
         Timer1.Stop()
@@ -175,11 +191,8 @@ Public Class Form1
         Label3.Text = "{0} Instances Running (conhost.exe)"
         Label4.Text = "{0} Instances Running (cmd.exe)"
         Label5.Text = "{0} All Processes"
+        make_log_file()
     End Sub
-
-
-
-
 
     Public Class MyUtilities
         Shared Sub RunCommandCom(command As String, arguments As String, permanent As Boolean, invis As Boolean)
@@ -226,11 +239,11 @@ Public Class Form1
         TextBox1.Text = ""
         Dim FileNameBackup
         If CheckBox2.Checked = False Then
-
+            CheckBox9.Checked = False
             TextBox2.Text = ""
             Button4.Enabled = False
         Else
-
+            CheckBox9.Checked = True
             Try
                 TextBox2.Text = FileNameBackup
             Catch ex As Exception
@@ -276,15 +289,28 @@ Public Class Form1
             instanceCount3 = 0
             MainIn = 0
             FullProRUnCalc = 0
+
             '    Process.Start("taskkill.exe", "/im ffmpeg.dll /t /f")
             Label2.Text = "{0} Instances Running (FFMPEG)"
             Label3.Text = "{0} Instances Running (conhost.exe)"
             Label4.Text = "{0} Instances Running (cmd.exe)"
             Label5.Text = "{0} All Processes"
+
             ProgressBar1.Value = 0
             MyUtilities.RunCommandCom("taskkill.exe /im ffmpeg.dll /t /f", "/W", False, True)
+            make_log_file()
             Timeer.Stop()
             Timer1.Stop()
+            If Time > 30 Then
+                If ComboBox1.SelectedIndex = 1 Then
+                    MyUtilities.RunCommandCom("shutdown /s", "/W", False, True)
+                ElseIf ComboBox1.SelectedIndex = 2 Then
+                    'shutdown /l
+                    MyUtilities.RunCommandCom("shutdown /l", "/W", False, True)
+                ElseIf ComboBox1.SelectedIndex = 3 Then
+                    MyUtilities.RunCommandCom("shutdown /r", "/W", False, True)
+                End If
+            End If
         End If
         If instanceCount > lastintc Then
             MainIn = instanceCount
@@ -319,7 +345,27 @@ Public Class Form1
         End If
         lastintc = instanceCount
     End Sub
+    Sub make_log_file()
+        If CheckBox4.Checked = True Then
+            Try
+                Dim sb As New System.Text.StringBuilder()
+                For Each o As Object In ListBox1.Items
+                    sb.AppendLine(o)
+                Next
+                System.IO.File.WriteAllText(TextBox4.Text, sb.ToString())
+            Catch ex As Exception
+                MsgBox("ERR: Failed to make log file", 16 + 0, "ERR")
+            End Try
 
+            If CheckBox6.Checked = True Then
+                Try
+                    'output.Show()
+                    Process.Start("notepad.exe", TextBox4.Text)
+                Catch ex As Exception
+                End Try
+            End If
+        End If
+    End Sub
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         If TextBox1.Text = "" Then
             Button1.Enabled = False
@@ -402,39 +448,22 @@ Public Class Form1
         Button2.Enabled = False
         ListBox1.Items.Add("ERR: Prosses stoped by user")
         Status("ERR: Prosses stoped by user", 2)
-
+        My.Settings.SET_ML_F = CheckBox4.Checked
+        My.Settings.Save()
     End Sub
 
     Private Sub Github_BTN_Click(sender As Object, e As EventArgs) Handles Github_BTN.Click
         Try
             Process.Start("https://github.com/zv8001/MP4-to-AMV")
         Catch ex As Exception
-
+            Try
+                Process.Start("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe", "https://github.com/zv8001/MP4-to-AMV")
+            Catch ex1 As Exception
+            End Try
         End Try
-
     End Sub
 
-    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
-        If CheckBox3.Checked = True Then
-            Dim result As DialogResult = MessageBox.Show("WARNING: Do not mess with this setting unless you know what you are doing and know how to use ffmpeg. Do you still want to change this?", "mp4toamv https://www.zv800.com", MessageBoxButtons.YesNo)
-            If result = DialogResult.Yes Then
-                args = True
-                TextBox3.ReadOnly = False
-                TextBox3.Text = "-c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882"
-                CheckBox3.Checked = True
-            ElseIf result = DialogResult.No Then
-                args = False
-                TextBox3.ReadOnly = True
-                TextBox3.Text = ""
-                CheckBox3.Checked = False
-            End If
-        Else
-            TextBox3.ReadOnly = True
-            args = False
-            TextBox3.Text = ""
-            CheckBox3.Checked = False
-        End If
-    End Sub
+
 
     Private Sub Timeer_Tick(sender As Object, e As EventArgs) Handles Timeer.Tick
         Time = Time + 1
@@ -495,5 +524,165 @@ Public Class Form1
 
     Private Sub RichTextBox1_TextChanged(sender As Object, e As EventArgs) Handles RichTextBox1.TextChanged
 
+    End Sub
+
+    Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+        MIT.ShowDialog()
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+
+    End Sub
+
+    Private Sub CheckBox5_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox5.CheckedChanged
+        If CheckBox5.Checked = True Then
+            ffmpegpath_txt.ReadOnly = False
+            My.Settings.SET_UCFFP = ffmpegpath_txt.Text
+        Else
+            My.Settings.SET_UCFFP = ""
+            ffmpegpath_txt.Text = Application.StartupPath & "\ffmpeg.dll"
+            ffmpegpath_txt.ReadOnly = True
+        End If
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Try
+            My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\ffmpeg.dll")
+        Catch ex As Exception
+
+        End Try
+        Try
+
+            My.Computer.Network.DownloadFile("https://mp4toamv.netlify.app/mp4toamv/bin/Debug/net6.0-windows/ffmpeg.dll",
+                       Application.StartupPath & "\ffmpeg.dll", "", "", True, 500, True)
+        Catch ex As Exception
+            Try
+                My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\ffmpeg.dll")
+            Catch ex1 As Exception
+            End Try
+
+            MsgBox("error 48 (try agen)", 16 + 0)
+            ListBox1.Items.Add("ERR: ffmpeg.dll not found")
+            Status("ERR: ffmpeg.dll not found", 2)
+            Timer1.Enabled = False
+            Button1.Enabled = False
+        End Try
+    End Sub
+
+    Private Sub CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox4.CheckedChanged
+
+
+        If CheckBox4.Checked = True Then
+            '   My.Settings.SET_ML_F = 1
+            My.Settings.Save()
+            TextBox4.Enabled = True
+            CheckBox6.Enabled = True
+        Else
+            '  My.Settings.SET_ML_F = 0
+            My.Settings.Save()
+            TextBox4.Enabled = False
+            CheckBox6.Enabled = False
+        End If
+
+    End Sub
+
+
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        My.Settings.SET_DoneDO = ComboBox1.SelectedIndex
+    End Sub
+
+    Private Sub CheckBox6_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox6.CheckedChanged
+        My.Settings.SET_OLFWD = CheckBox6.Checked
+    End Sub
+
+    Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
+        My.Settings.SET_LFP = TextBox4.Text
+    End Sub
+    Sub Load_Settings() 'SETTINGS NOT WORKING ):
+
+        TextBox4.Text = My.Settings.SET_LFP
+        If My.Settings.SET_ML_F = 1 Then
+            CheckBox4.Checked = True
+        Else
+            CheckBox4.Checked = False
+        End If
+        CheckBox6.Checked = My.Settings.SET_OLFWD
+        ComboBox1.SelectedIndex = My.Settings.SET_DoneDO
+
+        '    CheckBox4.Checked = My.Settings.SET_ML_F
+        If Not My.Settings.SET_UCFFP = "" Then
+            ffmpegpath_txt.Text = My.Settings.SET_UCFFP
+            CheckBox5.Checked = True
+        End If
+    End Sub
+
+    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
+        If CheckBox3.Checked = True Then
+            CheckBox7.Enabled = True
+            Dim result As DialogResult = MessageBox.Show("WARNING: Do not mess with this setting unless you know what you are doing and know how to use ffmpeg. Do you still want to change this?", "mp4toamv https://www.zv800.com", MessageBoxButtons.YesNo)
+            If result = DialogResult.Yes Then
+                args = True
+                TextBox3.ReadOnly = False
+                TextBox3.Text = "-c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882"
+                CheckBox3.Checked = True
+
+            ElseIf result = DialogResult.No Then
+                args = False
+                TextBox3.ReadOnly = True
+                TextBox3.Text = ""
+                CheckBox7.Checked = True
+                CheckBox7.Enabled = False
+                CheckBox3.Checked = False
+            End If
+        Else
+            CheckBox7.Enabled = False
+            CheckBox7.Checked = True
+            TextBox3.ReadOnly = True
+            args = False
+            TextBox3.Text = ""
+
+            CheckBox3.Checked = False
+        End If
+    End Sub
+
+    Private Sub LinkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel3.LinkClicked
+        ' https://ffmpeg.org/ffmpeg.html
+    End Sub
+
+    Private Sub Fullffmpegcmddechtime_Tick(sender As Object, e As EventArgs) Handles Fullffmpegcmddechtime.Tick
+        If args = True Then
+            RichTextBox2.Text = ffmpegpath_txt.Text & " -i """ & "INPUT.mp4" & """ " & TextBox3.Text & " "" OUT.amv"""
+
+        Else
+            RichTextBox2.Text = ffmpegpath_txt.Text & " -i """ & "INPUT.mp4" & """ -c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882 ""OUT.AMV"""
+
+        End If
+    End Sub
+
+    Private Sub CheckBox9_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox9.CheckedChanged
+        If CheckBox9.Checked = True Then
+            CheckBox2.Checked = True
+        Else
+            CheckBox2.Checked = False
+        End If
+    End Sub
+    Sub Refeshlogfile()
+        Dim validchars As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+        Dim sb As New StringBuilder()
+        Dim rand As New Random()
+        For i As Integer = 1 To 10
+            Dim idx As Integer = rand.Next(0, validchars.Length)
+            Dim randomChar As Char = validchars(idx)
+            sb.Append(randomChar)
+        Next i
+        Dim randomString = sb.ToString()
+        TextBox4.Text = Path.GetTempPath() & randomString & ".LOG"
+    End Sub
+
+    Private Sub CheckBox7_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox7.CheckedChanged
+        If CheckBox7.Checked = False Then
+            MsgBox("WARNING: If you dont have ""Run In the backgound"" checked A NEW WINDOW WILL OPEN FOR EVRY FILE BEING converted. This will lag / crash your pc if you have more then 5-10 files that you are converting.", 48 + 0)
+        End If
     End Sub
 End Class

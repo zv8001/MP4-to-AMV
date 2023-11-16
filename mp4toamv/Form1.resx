@@ -129,6 +129,17 @@
   <metadata name="BackgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>562, 14</value>
   </metadata>
+  <data name="RichTextBox1.Text" xml:space="preserve">
+    <value>©2023 zv800 / z3ck200
+Discord account name: zv8
+github page: https://github.com/zv8001/MP4-to-AMV
+website https://www.zv800.com
+gmail: denverv1000@gmail.com
+mail@zv800.com
+FFMPEG: http://ffmpeg.org/
+(c) zv800 2023
+</value>
+  </data>
   <data name="Label10.Text" xml:space="preserve">
     <value>Warning converting meny files at the same time 
 will use a lot of cpu / ram 
@@ -155,6 +166,9 @@ will use a lot of cpu / ram
   </metadata>
   <metadata name="MenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1148, 17</value>
+  </metadata>
+  <metadata name="Fullffmpegcmddechtime.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1284, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

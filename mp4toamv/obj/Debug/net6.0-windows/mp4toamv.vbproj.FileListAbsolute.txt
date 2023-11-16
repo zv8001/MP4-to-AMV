@@ -39,3 +39,6 @@ C:\Users\zv800\Documents\GitHub\MP4-to-AMV\mp4toamv\obj\Debug\net6.0-windows\mp4
 C:\Users\zv800\Documents\GitHub\MP4-to-AMV\mp4toamv\obj\Debug\net6.0-windows\mp4toamv.genruntimeconfig.cache
 C:\Users\zv800\Documents\GitHub\MP4-to-AMV\mp4toamv\obj\Debug\net6.0-windows\ref\mp4toamv.dll
 C:\Users\zv800\Documents\GitHub\MP4-to-AMV\mp4toamv\obj\Debug\net6.0-windows\mp4toamv.MIT.resources
+C:\Users\zv800\Documents\GitHub\MP4-to-AMV\mp4toamv\obj\Debug\net6.0-windows\mp4toamv.Splash_Screen.resources
+C:\Users\zv800\Documents\GitHub\MP4-to-AMV\mp4toamv\bin\Debug\net6.0-windows\mp4toamv.dll.config
+C:\Users\zv800\Documents\GitHub\MP4-to-AMV\mp4toamv\obj\Debug\net6.0-windows\mp4toamv.output.resources

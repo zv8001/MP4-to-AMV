@@ -10,7 +10,13 @@
     <Compile Update="MIT.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="output.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Settings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Splash Screen.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Working.vb">

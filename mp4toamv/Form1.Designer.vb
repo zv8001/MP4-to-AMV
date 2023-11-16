@@ -30,8 +30,6 @@ Partial Class Form1
         BackgroundWorker1 = New ComponentModel.BackgroundWorker()
         TabControl1 = New TabControl()
         TabPage1 = New TabPage()
-        CheckBox3 = New CheckBox()
-        TextBox3 = New TextBox()
         GroupBox1 = New GroupBox()
         Label6 = New Label()
         Label2 = New Label()
@@ -50,8 +48,33 @@ Partial Class Form1
         Button1 = New Button()
         Label1 = New Label()
         CheckBox1 = New CheckBox()
+        TabPage3 = New TabPage()
+        GroupBox5 = New GroupBox()
+        CheckBox9 = New CheckBox()
+        CheckBox8 = New CheckBox()
+        CheckBox7 = New CheckBox()
+        Label17 = New Label()
+        RichTextBox2 = New RichTextBox()
+        LinkLabel3 = New LinkLabel()
+        TextBox3 = New TextBox()
+        CheckBox3 = New CheckBox()
+        Label15 = New Label()
+        CheckBox5 = New CheckBox()
+        Label14 = New Label()
+        ffmpegpath_txt = New TextBox()
+        Label13 = New Label()
+        Button5 = New Button()
+        GroupBox4 = New GroupBox()
+        CheckBox6 = New CheckBox()
+        Label16 = New Label()
+        TextBox4 = New TextBox()
+        Label12 = New Label()
+        ComboBox1 = New ComboBox()
+        CheckBox4 = New CheckBox()
+        Label11 = New Label()
         TabPage2 = New TabPage()
         GroupBox3 = New GroupBox()
+        LinkLabel2 = New LinkLabel()
         RichTextBox1 = New RichTextBox()
         Label10 = New Label()
         Label9 = New Label()
@@ -74,9 +97,13 @@ Partial Class Form1
         HelpToolStripMenuItem = New ToolStripMenuItem()
         FFMPEGToolStripMenuItem = New ToolStripMenuItem()
         MP4ToAmvToolStripMenuItem = New ToolStripMenuItem()
+        Fullffmpegcmddechtime = New Timer(components)
         TabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         GroupBox1.SuspendLayout()
+        TabPage3.SuspendLayout()
+        GroupBox5.SuspendLayout()
+        GroupBox4.SuspendLayout()
         TabPage2.SuspendLayout()
         GroupBox3.SuspendLayout()
         GroupBox2.SuspendLayout()
@@ -89,6 +116,7 @@ Partial Class Form1
         ' TabControl1
         ' 
         TabControl1.Controls.Add(TabPage1)
+        TabControl1.Controls.Add(TabPage3)
         TabControl1.Controls.Add(TabPage2)
         TabControl1.Location = New Point(12, 29)
         TabControl1.Name = "TabControl1"
@@ -99,8 +127,6 @@ Partial Class Form1
         ' TabPage1
         ' 
         TabPage1.BackColor = Color.Transparent
-        TabPage1.Controls.Add(CheckBox3)
-        TabPage1.Controls.Add(TextBox3)
         TabPage1.Controls.Add(GroupBox1)
         TabPage1.Controls.Add(Button4)
         TabPage1.Controls.Add(TextBox2)
@@ -118,27 +144,6 @@ Partial Class Form1
         TabPage1.Size = New Size(448, 476)
         TabPage1.TabIndex = 0
         TabPage1.Text = "Converter"
-        ' 
-        ' CheckBox3
-        ' 
-        CheckBox3.AutoSize = True
-        CheckBox3.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
-        CheckBox3.Location = New Point(336, 278)
-        CheckBox3.Name = "CheckBox3"
-        CheckBox3.Size = New Size(108, 21)
-        CheckBox3.TabIndex = 19
-        CheckBox3.Text = "FFMPEG Args"
-        CheckBox3.UseVisualStyleBackColor = True
-        ' 
-        ' TextBox3
-        ' 
-        TextBox3.ForeColor = Color.Black
-        TextBox3.Location = New Point(6, 274)
-        TextBox3.Name = "TextBox3"
-        TextBox3.PlaceholderText = "-c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882"
-        TextBox3.ReadOnly = True
-        TextBox3.Size = New Size(324, 27)
-        TextBox3.TabIndex = 18
         ' 
         ' GroupBox1
         ' 
@@ -159,7 +164,7 @@ Partial Class Form1
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point)
+        Label6.Font = New Font("Segoe UI", 7.0F, FontStyle.Regular, GraphicsUnit.Point)
         Label6.Location = New Point(12, 100)
         Label6.Name = "Label6"
         Label6.Size = New Size(157, 15)
@@ -227,7 +232,7 @@ Partial Class Form1
         ' 
         ' Button4
         ' 
-        Button4.Location = New Point(383, 199)
+        Button4.Location = New Point(384, 247)
         Button4.Name = "Button4"
         Button4.Size = New Size(58, 29)
         Button4.TabIndex = 9
@@ -236,7 +241,7 @@ Partial Class Form1
         ' 
         ' TextBox2
         ' 
-        TextBox2.Location = New Point(6, 199)
+        TextBox2.Location = New Point(7, 247)
         TextBox2.Name = "TextBox2"
         TextBox2.PlaceholderText = "Save File Path"
         TextBox2.ReadOnly = True
@@ -248,7 +253,7 @@ Partial Class Form1
         CheckBox2.AutoSize = True
         CheckBox2.Checked = True
         CheckBox2.CheckState = CheckState.Checked
-        CheckBox2.Location = New Point(167, 135)
+        CheckBox2.Location = New Point(168, 183)
         CheckBox2.Name = "CheckBox2"
         CheckBox2.Size = New Size(97, 24)
         CheckBox2.TabIndex = 7
@@ -257,7 +262,7 @@ Partial Class Form1
         ' 
         ' Button3
         ' 
-        Button3.Location = New Point(383, 163)
+        Button3.Location = New Point(384, 211)
         Button3.Name = "Button3"
         Button3.Size = New Size(58, 29)
         Button3.TabIndex = 6
@@ -266,7 +271,7 @@ Partial Class Form1
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(6, 165)
+        TextBox1.Location = New Point(7, 213)
         TextBox1.Name = "TextBox1"
         TextBox1.PlaceholderText = "File / Foloer name"
         TextBox1.ReadOnly = True
@@ -279,13 +284,13 @@ Partial Class Form1
         ListBox1.ItemHeight = 20
         ListBox1.Location = New Point(3, 26)
         ListBox1.Name = "ListBox1"
-        ListBox1.Size = New Size(438, 104)
+        ListBox1.Size = New Size(438, 144)
         ListBox1.TabIndex = 4
         ' 
         ' Button2
         ' 
         Button2.Enabled = False
-        Button2.Location = New Point(311, 229)
+        Button2.Location = New Point(312, 277)
         Button2.Name = "Button2"
         Button2.Size = New Size(130, 29)
         Button2.TabIndex = 3
@@ -295,7 +300,7 @@ Partial Class Form1
         ' Button1
         ' 
         Button1.Enabled = False
-        Button1.Location = New Point(3, 229)
+        Button1.Location = New Point(4, 277)
         Button1.Name = "Button1"
         Button1.Size = New Size(302, 29)
         Button1.TabIndex = 2
@@ -317,12 +322,282 @@ Partial Class Form1
         CheckBox1.Checked = True
         CheckBox1.CheckState = CheckState.Checked
         CheckBox1.Enabled = False
-        CheckBox1.Location = New Point(6, 135)
+        CheckBox1.Location = New Point(7, 183)
         CheckBox1.Name = "CheckBox1"
         CheckBox1.Size = New Size(143, 24)
         CheckBox1.TabIndex = 0
         CheckBox1.Text = "CPU & Ram limiter"
         CheckBox1.UseVisualStyleBackColor = True
+        ' 
+        ' TabPage3
+        ' 
+        TabPage3.Controls.Add(GroupBox5)
+        TabPage3.Controls.Add(GroupBox4)
+        TabPage3.Controls.Add(Label11)
+        TabPage3.Location = New Point(4, 29)
+        TabPage3.Name = "TabPage3"
+        TabPage3.Size = New Size(448, 476)
+        TabPage3.TabIndex = 2
+        TabPage3.Text = "Settings"
+        TabPage3.UseVisualStyleBackColor = True
+        ' 
+        ' GroupBox5
+        ' 
+        GroupBox5.Controls.Add(CheckBox9)
+        GroupBox5.Controls.Add(CheckBox8)
+        GroupBox5.Controls.Add(CheckBox7)
+        GroupBox5.Controls.Add(Label17)
+        GroupBox5.Controls.Add(RichTextBox2)
+        GroupBox5.Controls.Add(LinkLabel3)
+        GroupBox5.Controls.Add(TextBox3)
+        GroupBox5.Controls.Add(CheckBox3)
+        GroupBox5.Controls.Add(Label15)
+        GroupBox5.Controls.Add(CheckBox5)
+        GroupBox5.Controls.Add(Label14)
+        GroupBox5.Controls.Add(ffmpegpath_txt)
+        GroupBox5.Controls.Add(Label13)
+        GroupBox5.Controls.Add(Button5)
+        GroupBox5.Location = New Point(3, 164)
+        GroupBox5.Name = "GroupBox5"
+        GroupBox5.Size = New Size(442, 300)
+        GroupBox5.TabIndex = 6
+        GroupBox5.TabStop = False
+        GroupBox5.Text = "FFMPEG Settings"
+        ' 
+        ' CheckBox9
+        ' 
+        CheckBox9.AutoSize = True
+        CheckBox9.Checked = True
+        CheckBox9.CheckState = CheckState.Checked
+        CheckBox9.Font = New Font("Segoe UI", 6.6F, FontStyle.Regular, GraphicsUnit.Point)
+        CheckBox9.Location = New Point(331, 268)
+        CheckBox9.Name = "CheckBox9"
+        CheckBox9.Size = New Size(80, 17)
+        CheckBox9.TabIndex = 27
+        CheckBox9.Text = "Single file"
+        CheckBox9.UseVisualStyleBackColor = True
+        ' 
+        ' CheckBox8
+        ' 
+        CheckBox8.AutoSize = True
+        CheckBox8.Checked = True
+        CheckBox8.CheckState = CheckState.Checked
+        CheckBox8.Enabled = False
+        CheckBox8.Font = New Font("Segoe UI", 6.6F, FontStyle.Regular, GraphicsUnit.Point)
+        CheckBox8.Location = New Point(164, 268)
+        CheckBox8.Name = "CheckBox8"
+        CheckBox8.Size = New Size(152, 17)
+        CheckBox8.TabIndex = 26
+        CheckBox8.Text = "Run all at the same time"
+        CheckBox8.UseVisualStyleBackColor = True
+        ' 
+        ' CheckBox7
+        ' 
+        CheckBox7.AutoSize = True
+        CheckBox7.Checked = True
+        CheckBox7.CheckState = CheckState.Checked
+        CheckBox7.Enabled = False
+        CheckBox7.Font = New Font("Segoe UI", 6.6F, FontStyle.Regular, GraphicsUnit.Point)
+        CheckBox7.Location = New Point(9, 268)
+        CheckBox7.Name = "CheckBox7"
+        CheckBox7.Size = New Size(145, 17)
+        CheckBox7.TabIndex = 25
+        CheckBox7.Text = "Run in the backgound"
+        CheckBox7.UseVisualStyleBackColor = True
+        ' 
+        ' Label17
+        ' 
+        Label17.AutoSize = True
+        Label17.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        Label17.Location = New Point(9, 186)
+        Label17.Name = "Label17"
+        Label17.Size = New Size(145, 17)
+        Label17.TabIndex = 24
+        Label17.Text = "Full FFMPEG Command:"
+        ' 
+        ' RichTextBox2
+        ' 
+        RichTextBox2.Font = New Font("Segoe UI", 6.6F, FontStyle.Regular, GraphicsUnit.Point)
+        RichTextBox2.Location = New Point(9, 206)
+        RichTextBox2.Name = "RichTextBox2"
+        RichTextBox2.ReadOnly = True
+        RichTextBox2.Size = New Size(430, 56)
+        RichTextBox2.TabIndex = 23
+        RichTextBox2.Text = "ffmpeg.dll  -i ""inputfile.mp4"" -c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882 ""outputfile.amv"""
+        ' 
+        ' LinkLabel3
+        ' 
+        LinkLabel3.AutoSize = True
+        LinkLabel3.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        LinkLabel3.Location = New Point(274, 137)
+        LinkLabel3.Name = "LinkLabel3"
+        LinkLabel3.Size = New Size(35, 17)
+        LinkLabel3.TabIndex = 22
+        LinkLabel3.TabStop = True
+        LinkLabel3.Text = "Help"
+        ' 
+        ' TextBox3
+        ' 
+        TextBox3.Font = New Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point)
+        TextBox3.ForeColor = Color.Black
+        TextBox3.Location = New Point(9, 157)
+        TextBox3.Name = "TextBox3"
+        TextBox3.PlaceholderText = "-c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882"
+        TextBox3.ReadOnly = True
+        TextBox3.Size = New Size(430, 25)
+        TextBox3.TabIndex = 20
+        ' 
+        ' CheckBox3
+        ' 
+        CheckBox3.AutoSize = True
+        CheckBox3.Font = New Font("Segoe UI", 6.4F, FontStyle.Regular, GraphicsUnit.Point)
+        CheckBox3.Location = New Point(109, 137)
+        CheckBox3.Name = "CheckBox3"
+        CheckBox3.Size = New Size(159, 17)
+        CheckBox3.TabIndex = 21
+        CheckBox3.Text = "Use custome ffmpeg args"
+        CheckBox3.UseVisualStyleBackColor = True
+        ' 
+        ' Label15
+        ' 
+        Label15.AutoSize = True
+        Label15.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        Label15.Location = New Point(9, 137)
+        Label15.Name = "Label15"
+        Label15.Size = New Size(94, 17)
+        Label15.TabIndex = 8
+        Label15.Text = "FFMPEG ARGS:"
+        ' 
+        ' CheckBox5
+        ' 
+        CheckBox5.AutoSize = True
+        CheckBox5.Font = New Font("Segoe UI", 7.3F, FontStyle.Regular, GraphicsUnit.Point)
+        CheckBox5.Location = New Point(6, 77)
+        CheckBox5.Name = "CheckBox5"
+        CheckBox5.Size = New Size(181, 21)
+        CheckBox5.TabIndex = 6
+        CheckBox5.Text = "Use custome ffmpeg path"
+        CheckBox5.UseVisualStyleBackColor = True
+        ' 
+        ' Label14
+        ' 
+        Label14.AutoSize = True
+        Label14.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        Label14.Location = New Point(6, 23)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(436, 51)
+        Label14.TabIndex = 6
+        Label14.Text = "ffmpeg is a universal media converter. It can read a wide variety of inputs" & vbCrLf & " - including live grabbing/recording devices - filter, and" & vbCrLf & " transcode them into a plethora of output formats."
+        ' 
+        ' ffmpegpath_txt
+        ' 
+        ffmpegpath_txt.Location = New Point(144, 104)
+        ffmpegpath_txt.Name = "ffmpegpath_txt"
+        ffmpegpath_txt.ReadOnly = True
+        ffmpegpath_txt.Size = New Size(292, 27)
+        ffmpegpath_txt.TabIndex = 2
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Font = New Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point)
+        Label13.Location = New Point(193, 84)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(91, 17)
+        Label13.TabIndex = 1
+        Label13.Text = "FFMPEG PATH:"
+        ' 
+        ' Button5
+        ' 
+        Button5.Location = New Point(6, 102)
+        Button5.Name = "Button5"
+        Button5.Size = New Size(128, 29)
+        Button5.TabIndex = 0
+        Button5.Text = "reinstall ffmpeg"
+        Button5.UseVisualStyleBackColor = True
+        ' 
+        ' GroupBox4
+        ' 
+        GroupBox4.Controls.Add(CheckBox6)
+        GroupBox4.Controls.Add(Label16)
+        GroupBox4.Controls.Add(TextBox4)
+        GroupBox4.Controls.Add(Label12)
+        GroupBox4.Controls.Add(ComboBox1)
+        GroupBox4.Controls.Add(CheckBox4)
+        GroupBox4.Location = New Point(3, 31)
+        GroupBox4.Name = "GroupBox4"
+        GroupBox4.Size = New Size(442, 127)
+        GroupBox4.TabIndex = 3
+        GroupBox4.TabStop = False
+        GroupBox4.Text = "Mp4 to amv settings"
+        ' 
+        ' CheckBox6
+        ' 
+        CheckBox6.AutoSize = True
+        CheckBox6.Checked = True
+        CheckBox6.CheckState = CheckState.Checked
+        CheckBox6.Location = New Point(130, 26)
+        CheckBox6.Name = "CheckBox6"
+        CheckBox6.Size = New Size(193, 24)
+        CheckBox6.TabIndex = 8
+        CheckBox6.Text = "open log file when done"
+        CheckBox6.UseVisualStyleBackColor = True
+        ' 
+        ' Label16
+        ' 
+        Label16.AutoSize = True
+        Label16.Location = New Point(197, 61)
+        Label16.Name = "Label16"
+        Label16.Size = New Size(96, 20)
+        Label16.TabIndex = 7
+        Label16.Text = "Log file path:"
+        ' 
+        ' TextBox4
+        ' 
+        TextBox4.Location = New Point(197, 84)
+        TextBox4.Name = "TextBox4"
+        TextBox4.Size = New Size(239, 27)
+        TextBox4.TabIndex = 6
+        ' 
+        ' Label12
+        ' 
+        Label12.AutoSize = True
+        Label12.Location = New Point(6, 61)
+        Label12.Name = "Label12"
+        Label12.Size = New Size(185, 20)
+        Label12.TabIndex = 5
+        Label12.Text = "When MP4 to amv is done:"
+        ' 
+        ' ComboBox1
+        ' 
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Items.AddRange(New Object() {"Dont do anything", "Shutdown pc", "logout of pc", "restart pc"})
+        ComboBox1.Location = New Point(6, 84)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(185, 28)
+        ComboBox1.TabIndex = 4
+        ' 
+        ' CheckBox4
+        ' 
+        CheckBox4.AutoSize = True
+        CheckBox4.Checked = True
+        CheckBox4.CheckState = CheckState.Checked
+        CheckBox4.Location = New Point(6, 26)
+        CheckBox4.Name = "CheckBox4"
+        CheckBox4.Size = New Size(118, 24)
+        CheckBox4.TabIndex = 2
+        CheckBox4.Text = "Make log file"
+        CheckBox4.UseVisualStyleBackColor = True
+        ' 
+        ' Label11
+        ' 
+        Label11.AutoSize = True
+        Label11.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Label11.Location = New Point(3, 0)
+        Label11.Name = "Label11"
+        Label11.Size = New Size(89, 28)
+        Label11.TabIndex = 1
+        Label11.Text = "Settings"
         ' 
         ' TabPage2
         ' 
@@ -337,6 +612,7 @@ Partial Class Form1
         ' 
         ' GroupBox3
         ' 
+        GroupBox3.Controls.Add(LinkLabel2)
         GroupBox3.Controls.Add(RichTextBox1)
         GroupBox3.Controls.Add(Label10)
         GroupBox3.Controls.Add(Label9)
@@ -348,19 +624,30 @@ Partial Class Form1
         GroupBox3.TabStop = False
         GroupBox3.Text = "Info"
         ' 
+        ' LinkLabel2
+        ' 
+        LinkLabel2.AutoSize = True
+        LinkLabel2.Location = New Point(6, 440)
+        LinkLabel2.Name = "LinkLabel2"
+        LinkLabel2.Size = New Size(185, 20)
+        LinkLabel2.TabIndex = 23
+        LinkLabel2.TabStop = True
+        LinkLabel2.Text = "MIT License (c) zv800 2023"
+        ' 
         ' RichTextBox1
         ' 
-        RichTextBox1.Location = New Point(17, 319)
+        RichTextBox1.Location = New Point(6, 262)
         RichTextBox1.Name = "RichTextBox1"
-        RichTextBox1.Size = New Size(407, 123)
+        RichTextBox1.Size = New Size(424, 175)
         RichTextBox1.TabIndex = 22
-        RichTextBox1.Text = "©2023 zv800 / z3ck200" & vbLf & "Discord account name: zv8" & vbLf & "github page: https://github.com/zv8001/MP4-to-AMV" & vbLf & "website https://www.zv800.com" & vbLf & "FFMPEG: http://ffmpeg.org/" & vbLf & vbLf
+        RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
         ' 
         ' Label10
         ' 
         Label10.AutoSize = True
         Label10.Font = New Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point)
-        Label10.Location = New Point(17, 143)
+        Label10.ForeColor = Color.Black
+        Label10.Location = New Point(6, 96)
         Label10.Name = "Label10"
         Label10.Size = New Size(310, 153)
         Label10.TabIndex = 21
@@ -378,7 +665,7 @@ Partial Class Form1
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Label8.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Label8.Location = New Point(0, 23)
         Label8.Name = "Label8"
         Label8.Size = New Size(133, 28)
@@ -388,7 +675,7 @@ Partial Class Form1
         ' LinkLabel1
         ' 
         LinkLabel1.AutoSize = True
-        LinkLabel1.Location = New Point(244, 23)
+        LinkLabel1.Location = New Point(249, 23)
         LinkLabel1.Name = "LinkLabel1"
         LinkLabel1.Size = New Size(158, 20)
         LinkLabel1.TabIndex = 20
@@ -512,14 +799,20 @@ Partial Class Form1
         MP4ToAmvToolStripMenuItem.Size = New Size(171, 26)
         MP4ToAmvToolStripMenuItem.Text = "MP4 to amv"
         ' 
+        ' Fullffmpegcmddechtime
+        ' 
+        Fullffmpegcmddechtime.Enabled = True
+        Fullffmpegcmddechtime.Interval = 1000
+        ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(475, 586)
         Controls.Add(GroupBox2)
         Controls.Add(TabControl1)
         Controls.Add(MenuStrip1)
+        ForeColor = SystemColors.ControlText
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MainMenuStrip = MenuStrip1
         MaximizeBox = False
@@ -534,6 +827,12 @@ Partial Class Form1
         TabPage1.PerformLayout()
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
+        TabPage3.ResumeLayout(False)
+        TabPage3.PerformLayout()
+        GroupBox5.ResumeLayout(False)
+        GroupBox5.PerformLayout()
+        GroupBox4.ResumeLayout(False)
+        GroupBox4.PerformLayout()
         TabPage2.ResumeLayout(False)
         GroupBox3.ResumeLayout(False)
         GroupBox3.PerformLayout()
@@ -576,8 +875,6 @@ Partial Class Form1
     Friend WithEvents Github_BTN As Button
     Friend WithEvents Label7 As Label
     Friend WithEvents LinkLabel1 As LinkLabel
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents TextBox3 As TextBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents Label8 As Label
@@ -595,4 +892,30 @@ Partial Class Form1
     Friend WithEvents Label9 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents LinkLabel2 As LinkLabel
+    Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents CheckBox4 As CheckBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents ffmpegpath_txt As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Label12 As Label
+    Friend WithEvents CheckBox5 As CheckBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents CheckBox6 As CheckBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents CheckBox3 As CheckBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents LinkLabel3 As LinkLabel
+    Friend WithEvents Label17 As Label
+    Friend WithEvents RichTextBox2 As RichTextBox
+    Friend WithEvents CheckBox7 As CheckBox
+    Friend WithEvents CheckBox8 As CheckBox
+    Friend WithEvents Fullffmpegcmddechtime As Timer
+    Friend WithEvents CheckBox9 As CheckBox
 End Class
