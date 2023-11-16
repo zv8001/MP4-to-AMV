@@ -38,6 +38,7 @@ Public Class Form1
     Dim Running = False
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Refeshlogfile()
+
         ffmpegpath_txt.Text = Application.StartupPath & "\ffmpeg.dll"
         MIT.ShowDialog()
         If Not My.Computer.FileSystem.FileExists(Application.StartupPath & "\ffmpeg.dll") Then
@@ -411,6 +412,8 @@ Public Class Form1
     End Sub
     Function Status(Text1 As String, stat As Integer)
         LBR_STAT.Text = Text1
+        ListBox2.Items.Add(Text1)
+        RichTextBox3.AppendText(Environment.NewLine + Text1)
         If stat = 1 Then
             LBR_STAT.ForeColor = Color.Goldenrod
         ElseIf stat = 2 Then
@@ -474,7 +477,7 @@ Public Class Form1
     End Sub
 
     Private Sub DarkModeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DarkModeToolStripMenuItem.Click
-
+        MsgBox("Not done yet.", 64 + 0, "MP4toAMV")
     End Sub
 
     Private Sub HelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenuItem.Click
@@ -684,5 +687,20 @@ Public Class Form1
         If CheckBox7.Checked = False Then
             MsgBox("WARNING: If you dont have ""Run In the backgound"" checked A NEW WINDOW WILL OPEN FOR EVRY FILE BEING converted. This will lag / crash your pc if you have more then 5-10 files that you are converting.", 48 + 0)
         End If
+    End Sub
+
+    Private Sub MP4ToAmvToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MP4ToAmvToolStripMenuItem.Click
+        TabControl1.SelectedIndex = 3
+    End Sub
+
+    Private Sub FFMPEGToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FFMPEGToolStripMenuItem.Click
+        Try
+            Process.Start("https://www.ffmpeg.org/about.html")
+        Catch ex As Exception
+            Try
+                Process.Start("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe", "https://www.ffmpeg.org/about.html")
+            Catch ex1 As Exception
+        End Try
+        End Try
     End Sub
 End Class

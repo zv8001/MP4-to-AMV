@@ -72,6 +72,12 @@ Partial Class Form1
         ComboBox1 = New ComboBox()
         CheckBox4 = New CheckBox()
         Label11 = New Label()
+        TabPage4 = New TabPage()
+        TabControl2 = New TabControl()
+        TabPage5 = New TabPage()
+        ListBox2 = New ListBox()
+        TabPage6 = New TabPage()
+        RichTextBox3 = New RichTextBox()
         TabPage2 = New TabPage()
         GroupBox3 = New GroupBox()
         LinkLabel2 = New LinkLabel()
@@ -104,6 +110,10 @@ Partial Class Form1
         TabPage3.SuspendLayout()
         GroupBox5.SuspendLayout()
         GroupBox4.SuspendLayout()
+        TabPage4.SuspendLayout()
+        TabControl2.SuspendLayout()
+        TabPage5.SuspendLayout()
+        TabPage6.SuspendLayout()
         TabPage2.SuspendLayout()
         GroupBox3.SuspendLayout()
         GroupBox2.SuspendLayout()
@@ -117,6 +127,7 @@ Partial Class Form1
         ' 
         TabControl1.Controls.Add(TabPage1)
         TabControl1.Controls.Add(TabPage3)
+        TabControl1.Controls.Add(TabPage4)
         TabControl1.Controls.Add(TabPage2)
         TabControl1.Location = New Point(12, 29)
         TabControl1.Name = "TabControl1"
@@ -599,6 +610,65 @@ Partial Class Form1
         Label11.TabIndex = 1
         Label11.Text = "Settings"
         ' 
+        ' TabPage4
+        ' 
+        TabPage4.Controls.Add(TabControl2)
+        TabPage4.Location = New Point(4, 29)
+        TabPage4.Name = "TabPage4"
+        TabPage4.Size = New Size(448, 476)
+        TabPage4.TabIndex = 3
+        TabPage4.Text = "output"
+        TabPage4.UseVisualStyleBackColor = True
+        ' 
+        ' TabControl2
+        ' 
+        TabControl2.Controls.Add(TabPage5)
+        TabControl2.Controls.Add(TabPage6)
+        TabControl2.Location = New Point(3, 3)
+        TabControl2.Name = "TabControl2"
+        TabControl2.SelectedIndex = 0
+        TabControl2.Size = New Size(445, 461)
+        TabControl2.TabIndex = 1
+        ' 
+        ' TabPage5
+        ' 
+        TabPage5.Controls.Add(ListBox2)
+        TabPage5.Location = New Point(4, 29)
+        TabPage5.Name = "TabPage5"
+        TabPage5.Padding = New Padding(3)
+        TabPage5.Size = New Size(437, 428)
+        TabPage5.TabIndex = 0
+        TabPage5.Text = "List"
+        TabPage5.UseVisualStyleBackColor = True
+        ' 
+        ' ListBox2
+        ' 
+        ListBox2.FormattingEnabled = True
+        ListBox2.ItemHeight = 20
+        ListBox2.Location = New Point(6, 6)
+        ListBox2.Name = "ListBox2"
+        ListBox2.Size = New Size(425, 404)
+        ListBox2.TabIndex = 0
+        ' 
+        ' TabPage6
+        ' 
+        TabPage6.Controls.Add(RichTextBox3)
+        TabPage6.Location = New Point(4, 29)
+        TabPage6.Name = "TabPage6"
+        TabPage6.Padding = New Padding(3)
+        TabPage6.Size = New Size(437, 428)
+        TabPage6.TabIndex = 1
+        TabPage6.Text = "Text"
+        TabPage6.UseVisualStyleBackColor = True
+        ' 
+        ' RichTextBox3
+        ' 
+        RichTextBox3.Location = New Point(-1, -1)
+        RichTextBox3.Name = "RichTextBox3"
+        RichTextBox3.Size = New Size(439, 426)
+        RichTextBox3.TabIndex = 0
+        RichTextBox3.Text = ""
+        ' 
         ' TabPage2
         ' 
         TabPage2.Controls.Add(GroupBox3)
@@ -790,13 +860,13 @@ Partial Class Form1
         ' FFMPEGToolStripMenuItem
         ' 
         FFMPEGToolStripMenuItem.Name = "FFMPEGToolStripMenuItem"
-        FFMPEGToolStripMenuItem.Size = New Size(171, 26)
+        FFMPEGToolStripMenuItem.Size = New Size(224, 26)
         FFMPEGToolStripMenuItem.Text = "FFMPEG"
         ' 
         ' MP4ToAmvToolStripMenuItem
         ' 
         MP4ToAmvToolStripMenuItem.Name = "MP4ToAmvToolStripMenuItem"
-        MP4ToAmvToolStripMenuItem.Size = New Size(171, 26)
+        MP4ToAmvToolStripMenuItem.Size = New Size(224, 26)
         MP4ToAmvToolStripMenuItem.Text = "MP4 to amv"
         ' 
         ' Fullffmpegcmddechtime
@@ -833,6 +903,10 @@ Partial Class Form1
         GroupBox5.PerformLayout()
         GroupBox4.ResumeLayout(False)
         GroupBox4.PerformLayout()
+        TabPage4.ResumeLayout(False)
+        TabControl2.ResumeLayout(False)
+        TabPage5.ResumeLayout(False)
+        TabPage6.ResumeLayout(False)
         TabPage2.ResumeLayout(False)
         GroupBox3.ResumeLayout(False)
         GroupBox3.PerformLayout()
@@ -918,4 +992,10 @@ Partial Class Form1
     Friend WithEvents CheckBox8 As CheckBox
     Friend WithEvents Fullffmpegcmddechtime As Timer
     Friend WithEvents CheckBox9 As CheckBox
+    Friend WithEvents TabPage4 As TabPage
+    Friend WithEvents TabControl2 As TabControl
+    Friend WithEvents TabPage5 As TabPage
+    Friend WithEvents ListBox2 As ListBox
+    Friend WithEvents TabPage6 As TabPage
+    Friend WithEvents RichTextBox3 As RichTextBox
 End Class

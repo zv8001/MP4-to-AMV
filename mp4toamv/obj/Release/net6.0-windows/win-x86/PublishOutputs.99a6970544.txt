@@ -1,2 +1,3 @@
 C:\Users\zv800\Documents\GitHub\MP4-to-AMV\mp4toamv\bin\Release\net6.0-windows\publish\win-x86\mp4toamv.pdb
+C:\Users\zv800\Documents\GitHub\MP4-to-AMV\mp4toamv\bin\Release\net6.0-windows\publish\win-x86\mp4toamv.dll.config
 C:\Users\zv800\Documents\GitHub\MP4-to-AMV\mp4toamv\bin\Release\net6.0-windows\publish\win-x86\mp4toamv.exe
