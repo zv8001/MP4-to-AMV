@@ -10,5 +10,6 @@ Public Class Working
     End Sub
     Function CON(in1, out1)
         MyUtilities.RunCommandCom("ffmpeg.dll -i """ & in1 & """ -c:v amv -c:a adpcm_ima_amv -pix_fmt yuvj420p -vstrict -1 -s 160x120 -ac 1 -ar 22050 -r 25 -block_size 882 """ & out1 & """", "/W", True, False)
+        Return 0
     End Function
 End Class

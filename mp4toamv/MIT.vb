@@ -1,5 +1,6 @@
 ﻿
 Public Class MIT
+
     Dim OK = False
     Private Sub MIT_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If OK = False Then
@@ -21,6 +22,10 @@ Public Class MIT
             Catch ex1 As Exception
             End Try
         End Try
+
+    End Sub
+
+    Private Sub MIT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

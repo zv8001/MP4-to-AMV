@@ -73,8 +73,11 @@ Partial Class Form1
         CheckBox4 = New CheckBox()
         Label11 = New Label()
         TabPage4 = New TabPage()
+        Button6 = New Button()
+        SaveLogBTN = New Button()
         TabControl2 = New TabControl()
         TabPage5 = New TabPage()
+        OutputAutoScroll_check = New CheckBox()
         ListBox2 = New ListBox()
         TabPage6 = New TabPage()
         RichTextBox3 = New RichTextBox()
@@ -104,6 +107,8 @@ Partial Class Form1
         FFMPEGToolStripMenuItem = New ToolStripMenuItem()
         MP4ToAmvToolStripMenuItem = New ToolStripMenuItem()
         Fullffmpegcmddechtime = New Timer(components)
+        SaveLog_OFD = New SaveFileDialog()
+        ClearLogToolStripMenuItem = New ToolStripMenuItem()
         TabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         GroupBox1.SuspendLayout()
@@ -119,9 +124,6 @@ Partial Class Form1
         GroupBox2.SuspendLayout()
         MenuStrip1.SuspendLayout()
         SuspendLayout()
-        ' 
-        ' BackgroundWorker1
-        ' 
         ' 
         ' TabControl1
         ' 
@@ -175,7 +177,7 @@ Partial Class Form1
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point)
+        Label6.Font = New Font("Segoe UI", 7.0F, FontStyle.Regular, GraphicsUnit.Point)
         Label6.Location = New Point(12, 100)
         Label6.Name = "Label6"
         Label6.Size = New Size(157, 15)
@@ -603,7 +605,7 @@ Partial Class Form1
         ' Label11
         ' 
         Label11.AutoSize = True
-        Label11.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Label11.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Label11.Location = New Point(3, 0)
         Label11.Name = "Label11"
         Label11.Size = New Size(89, 28)
@@ -612,6 +614,8 @@ Partial Class Form1
         ' 
         ' TabPage4
         ' 
+        TabPage4.Controls.Add(Button6)
+        TabPage4.Controls.Add(SaveLogBTN)
         TabPage4.Controls.Add(TabControl2)
         TabPage4.Location = New Point(4, 29)
         TabPage4.Name = "TabPage4"
@@ -620,6 +624,24 @@ Partial Class Form1
         TabPage4.Text = "output"
         TabPage4.UseVisualStyleBackColor = True
         ' 
+        ' Button6
+        ' 
+        Button6.Location = New Point(344, 440)
+        Button6.Name = "Button6"
+        Button6.Size = New Size(100, 29)
+        Button6.TabIndex = 3
+        Button6.Text = "Clear Log"
+        Button6.UseVisualStyleBackColor = True
+        ' 
+        ' SaveLogBTN
+        ' 
+        SaveLogBTN.Location = New Point(7, 440)
+        SaveLogBTN.Name = "SaveLogBTN"
+        SaveLogBTN.Size = New Size(331, 29)
+        SaveLogBTN.TabIndex = 2
+        SaveLogBTN.Text = "Save"
+        SaveLogBTN.UseVisualStyleBackColor = True
+        ' 
         ' TabControl2
         ' 
         TabControl2.Controls.Add(TabPage5)
@@ -627,19 +649,31 @@ Partial Class Form1
         TabControl2.Location = New Point(3, 3)
         TabControl2.Name = "TabControl2"
         TabControl2.SelectedIndex = 0
-        TabControl2.Size = New Size(445, 461)
+        TabControl2.Size = New Size(445, 431)
         TabControl2.TabIndex = 1
         ' 
         ' TabPage5
         ' 
+        TabPage5.Controls.Add(OutputAutoScroll_check)
         TabPage5.Controls.Add(ListBox2)
         TabPage5.Location = New Point(4, 29)
         TabPage5.Name = "TabPage5"
         TabPage5.Padding = New Padding(3)
-        TabPage5.Size = New Size(437, 428)
+        TabPage5.Size = New Size(437, 398)
         TabPage5.TabIndex = 0
         TabPage5.Text = "List"
         TabPage5.UseVisualStyleBackColor = True
+        ' 
+        ' OutputAutoScroll_check
+        ' 
+        OutputAutoScroll_check.AutoSize = True
+        OutputAutoScroll_check.Font = New Font("Segoe UI", 6.5F, FontStyle.Regular, GraphicsUnit.Point)
+        OutputAutoScroll_check.Location = New Point(6, 375)
+        OutputAutoScroll_check.Name = "OutputAutoScroll_check"
+        OutputAutoScroll_check.Size = New Size(84, 17)
+        OutputAutoScroll_check.TabIndex = 1
+        OutputAutoScroll_check.Text = "Auto scroll"
+        OutputAutoScroll_check.UseVisualStyleBackColor = True
         ' 
         ' ListBox2
         ' 
@@ -647,7 +681,7 @@ Partial Class Form1
         ListBox2.ItemHeight = 20
         ListBox2.Location = New Point(6, 6)
         ListBox2.Name = "ListBox2"
-        ListBox2.Size = New Size(425, 404)
+        ListBox2.Size = New Size(425, 364)
         ListBox2.TabIndex = 0
         ' 
         ' TabPage6
@@ -656,7 +690,7 @@ Partial Class Form1
         TabPage6.Location = New Point(4, 29)
         TabPage6.Name = "TabPage6"
         TabPage6.Padding = New Padding(3)
-        TabPage6.Size = New Size(437, 428)
+        TabPage6.Size = New Size(437, 398)
         TabPage6.TabIndex = 1
         TabPage6.Text = "Text"
         TabPage6.UseVisualStyleBackColor = True
@@ -665,7 +699,7 @@ Partial Class Form1
         ' 
         RichTextBox3.Location = New Point(-1, -1)
         RichTextBox3.Name = "RichTextBox3"
-        RichTextBox3.Size = New Size(439, 426)
+        RichTextBox3.Size = New Size(439, 399)
         RichTextBox3.TabIndex = 0
         RichTextBox3.Text = ""
         ' 
@@ -735,7 +769,7 @@ Partial Class Form1
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Label8.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Label8.Location = New Point(0, 23)
         Label8.Name = "Label8"
         Label8.Size = New Size(133, 28)
@@ -778,9 +812,6 @@ Partial Class Form1
         ' 
         Timer1.Interval = 1
         ' 
-        ' MFS
-        ' 
-        ' 
         ' Timer2
         ' 
         Timer2.Enabled = True
@@ -804,7 +835,7 @@ Partial Class Form1
         ' MenuStrip1
         ' 
         MenuStrip1.ImageScalingSize = New Size(20, 20)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {FileToolStripMenuItem, HelpToolStripMenuItem})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {HelpToolStripMenuItem, FileToolStripMenuItem})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(475, 28)
@@ -820,22 +851,22 @@ Partial Class Form1
         ' 
         ' SettingsToolStripMenuItem
         ' 
-        SettingsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {DarkModeToolStripMenuItem})
+        SettingsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {DarkModeToolStripMenuItem, ClearLogToolStripMenuItem})
         SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        SettingsToolStripMenuItem.Size = New Size(145, 26)
+        SettingsToolStripMenuItem.Size = New Size(224, 26)
         SettingsToolStripMenuItem.Text = "Settings"
         ' 
         ' DarkModeToolStripMenuItem
         ' 
         DarkModeToolStripMenuItem.Name = "DarkModeToolStripMenuItem"
-        DarkModeToolStripMenuItem.Size = New Size(210, 26)
+        DarkModeToolStripMenuItem.Size = New Size(224, 26)
         DarkModeToolStripMenuItem.Text = "DarkMode toggle"
         ' 
         ' RunToolStripMenuItem
         ' 
         RunToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {StartToolStripMenuItem, StopToolStripMenuItem})
         RunToolStripMenuItem.Name = "RunToolStripMenuItem"
-        RunToolStripMenuItem.Size = New Size(145, 26)
+        RunToolStripMenuItem.Size = New Size(224, 26)
         RunToolStripMenuItem.Text = "Run"
         ' 
         ' StartToolStripMenuItem
@@ -874,9 +905,15 @@ Partial Class Form1
         Fullffmpegcmddechtime.Enabled = True
         Fullffmpegcmddechtime.Interval = 1000
         ' 
+        ' ClearLogToolStripMenuItem
+        ' 
+        ClearLogToolStripMenuItem.Name = "ClearLogToolStripMenuItem"
+        ClearLogToolStripMenuItem.Size = New Size(224, 26)
+        ClearLogToolStripMenuItem.Text = "ClearLog"
+        ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(475, 586)
         Controls.Add(GroupBox2)
@@ -906,6 +943,7 @@ Partial Class Form1
         TabPage4.ResumeLayout(False)
         TabControl2.ResumeLayout(False)
         TabPage5.ResumeLayout(False)
+        TabPage5.PerformLayout()
         TabPage6.ResumeLayout(False)
         TabPage2.ResumeLayout(False)
         GroupBox3.ResumeLayout(False)
@@ -998,4 +1036,9 @@ Partial Class Form1
     Friend WithEvents ListBox2 As ListBox
     Friend WithEvents TabPage6 As TabPage
     Friend WithEvents RichTextBox3 As RichTextBox
+    Friend WithEvents SaveLogBTN As Button
+    Friend WithEvents SaveLog_OFD As SaveFileDialog
+    Friend WithEvents OutputAutoScroll_check As CheckBox
+    Friend WithEvents Button6 As Button
+    Friend WithEvents ClearLogToolStripMenuItem As ToolStripMenuItem
 End Class
