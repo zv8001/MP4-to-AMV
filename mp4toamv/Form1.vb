@@ -222,7 +222,7 @@ Public Class Form1
         Else
             OpenFileDialog1.Title = "Please select a mp4 file"
             OpenFileDialog1.InitialDirectory = "C:\"
-            OpenFileDialog1.Filter = "mp4 Files|*.mp4"
+            OpenFileDialog1.Filter = "Video files|*.mp4;*.wmv;*.avi;*.mkv;*.mov;*.WebM;*.flv;*.MPEG4;*.ts;*.m4p;*.f4v;*.f4p;*.f4a;*.f4b;*.roq;*.3gp;*.svi;*.MTS;*.M2TS;*.mng;*.ogv"
             If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
 
 
@@ -700,7 +700,7 @@ Public Class Form1
             Try
                 Process.Start("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe", "https://www.ffmpeg.org/about.html")
             Catch ex1 As Exception
-        End Try
+            End Try
         End Try
     End Sub
 End Class

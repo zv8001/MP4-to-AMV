@@ -175,7 +175,7 @@ Partial Class Form1
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 7.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label6.Font = New Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point)
         Label6.Location = New Point(12, 100)
         Label6.Name = "Label6"
         Label6.Size = New Size(157, 15)
@@ -603,7 +603,7 @@ Partial Class Form1
         ' Label11
         ' 
         Label11.AutoSize = True
-        Label11.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Label11.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label11.Location = New Point(3, 0)
         Label11.Name = "Label11"
         Label11.Size = New Size(89, 28)
@@ -735,7 +735,7 @@ Partial Class Form1
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Label8.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label8.Location = New Point(0, 23)
         Label8.Name = "Label8"
         Label8.Size = New Size(133, 28)
@@ -860,13 +860,13 @@ Partial Class Form1
         ' FFMPEGToolStripMenuItem
         ' 
         FFMPEGToolStripMenuItem.Name = "FFMPEGToolStripMenuItem"
-        FFMPEGToolStripMenuItem.Size = New Size(224, 26)
+        FFMPEGToolStripMenuItem.Size = New Size(171, 26)
         FFMPEGToolStripMenuItem.Text = "FFMPEG"
         ' 
         ' MP4ToAmvToolStripMenuItem
         ' 
         MP4ToAmvToolStripMenuItem.Name = "MP4ToAmvToolStripMenuItem"
-        MP4ToAmvToolStripMenuItem.Size = New Size(224, 26)
+        MP4ToAmvToolStripMenuItem.Size = New Size(171, 26)
         MP4ToAmvToolStripMenuItem.Text = "MP4 to amv"
         ' 
         ' Fullffmpegcmddechtime
@@ -876,7 +876,7 @@ Partial Class Form1
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(475, 586)
         Controls.Add(GroupBox2)
