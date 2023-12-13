@@ -43,8 +43,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Refeshlogfile()
-        MsgBox(Application.StartupPath)
-        ffmpegpath_txt.Text = Application.StartupPath & "\ffmpeg.dll"
+        ffmpegpath_txt.Text = Application.StartupPath & "ffmpeg.dll"
         MIT.ShowDialog()
         If Not My.Computer.FileSystem.FileExists(Application.StartupPath & "\ffmpeg.dll") Then
 
@@ -486,7 +485,7 @@ Public Class Form1
             My.Settings.SET_UCFFP = ffmpegpath_txt.Text
         Else
             My.Settings.SET_UCFFP = ""
-            ffmpegpath_txt.Text = Application.StartupPath & "\ffmpeg.dll"
+            ffmpegpath_txt.Text = Application.StartupPath & "ffmpeg.dll"
             ffmpegpath_txt.ReadOnly = True
         End If
     End Sub
