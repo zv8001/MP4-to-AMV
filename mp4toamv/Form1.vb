@@ -43,6 +43,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Refeshlogfile()
+        MsgBox(Application.StartupPath)
         ffmpegpath_txt.Text = Application.StartupPath & "\ffmpeg.dll"
         MIT.ShowDialog()
         If Not My.Computer.FileSystem.FileExists(Application.StartupPath & "\ffmpeg.dll") Then
