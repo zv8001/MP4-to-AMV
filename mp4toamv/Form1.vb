@@ -153,6 +153,9 @@ Public Class Form1
 
                     My.Computer.FileSystem.DeleteFile(FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\" & fri.Name & ".amv")
                 End If
+                If Not My.Computer.FileSystem.DirectoryExists(FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\") Then
+                    System.IO.Directory.CreateDirectory(FolderBrowserDialog1.SelectedPath & "\mp4toamv_output\")
+                End If
                 Status("Starting FFMPEG.EXE", 0)
                 ListBox1.Items.Add("Starting FFMPEG.EXE")
                 If args = True Then
